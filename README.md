@@ -9,7 +9,7 @@ transformations, and ensure data quality through rigorous testing and documentat
 
 ## Working with the project
 
-### 2. Click 'Code', then 'Codespaces, then 'Create codespace on main'.
+Click 'Code', then 'Codespaces, then 'Create codespace on main'.
 
 ![Create codespace on main](images/open-codespace.gif)
 
