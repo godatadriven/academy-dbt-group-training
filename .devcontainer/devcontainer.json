@@ -24,7 +24,8 @@
         "*.yml": "jinja-yaml",
         "*.sql": "jinja-sql",
         "*.md": "jinja-md"
-      }
+      },
+    "welcomeMessage": "Hi! Start by executing `dbt init` to create your first dbt project."
     }
   }
 }
