@@ -22,7 +22,7 @@ To connect to your data in BigQuery you will need to configure gcloud CLI:
 3. Run `gcloud auth application-default login` in the terminal in your Codespace and login to your Google account.
 4. Run `gcloud config set project <PROJECT_ID>` with the project ID from step 1.
 5. Run `gcloud auth application-default set-quota-project <PROJECT_ID>` with the project ID from step 1.
-6. Continue setting up in the [Creating personal branch](#creating-personal-branch) section below
+6. Create a new branch `git checkout -b dbt_<name>`
 
 ## Data Overview
 
