@@ -1,17 +1,9 @@
 {
   "name": "Python Dev Container",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
-  "postCreateCommand": "bash scripts/install-dependencies.sh",
-  "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "installTools": true,
-      "version": "3.11"
-    }
-  },
+  "postCreateCommand": "bash scripts/install_dependencies.sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -25,7 +17,7 @@
         "*.sql": "jinja-sql",
         "*.md": "jinja-md"
       },
-    "welcomeMessage": "Hi! Start by executing `dbt init` to create your first dbt project."
+      "welcomeMessage": "Hi! Start by executing `dbt init` to create your first dbt project."
     }
   }
 }
