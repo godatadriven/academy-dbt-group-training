@@ -1,6 +1,8 @@
 {
-  "name": "Python Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "name": "dbt Group Training - gcloud",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
@@ -16,7 +18,7 @@
         "*.yml": "jinja-yaml",
         "*.sql": "jinja-sql",
         "*.md": "jinja-md"
-      },
+      }
     }
   }
 }
