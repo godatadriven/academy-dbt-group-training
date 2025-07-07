@@ -17,6 +17,9 @@
         "*.sql": "jinja-sql",
         "*.md": "jinja-md"
       },
+      "filesToOpen": [
+        "README.md"
+      ],
       "welcomeMessage": "Hi! Start by executing `dbt init` to create your first dbt project."
     }
   }
