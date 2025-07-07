@@ -11,14 +11,21 @@
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "innoverio.vscode-dbt-power-user"
+        "innoverio.vscode-dbt-power-user",
+        "googlecloudtools.cloudcode",
+        "redhat.vscode-yaml"
       ],
       "files.associations": {
         "*.yaml": "jinja-yaml",
         "*.yml": "jinja-yaml",
         "*.sql": "jinja-sql",
         "*.md": "jinja-md"
-      }
+      }, 
+
+    "markdown.preview.openMarkdownLinks": "inPreview",
+    "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+}
     }
   }
 }
