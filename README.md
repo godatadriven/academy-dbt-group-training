@@ -17,7 +17,7 @@ This will create a new `codespace`, a sandbox with everything you need for the t
 
 ### Connect to data
 To connect to your data in BigQuery you will need to configure gcloud CLI:
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and find the project which contains your data (in the training case this will be sql-training-422508).
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and find the project which contains your data (in the training case this will be `sql-training-422508`).
 2. Run `gcloud auth login` in the terminal in your Codespace and login to your Google account.
 3. Run `gcloud auth application-default login` in the terminal in your Codespace and login to your Google account.
 4. Run `gcloud config set project <PROJECT_ID>` with the project ID from step 1.
