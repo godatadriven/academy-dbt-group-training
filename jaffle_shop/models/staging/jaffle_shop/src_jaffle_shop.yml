@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    project: bza-datawarehouse # soms is dit database
+    dataset: dbt_lhilgert_jaffle_shop # soms is dit schema  (als 'name' overeenkomt met 'dataset' dan is dataset niet meer nodig)
+    tables:
+      - name: orders
+        identifier: raw_orders
+      - name: customers
+        identifier: raw_customers

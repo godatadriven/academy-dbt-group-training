@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: stripe
+    project: bza-datawarehouse # soms is dit database
+    dataset: dbt_lhilgert_stripe # soms is dit schema  (als 'name' overeenkomt met 'dataset' dan is dataset niet meer nodig)
+    tables:
+      - name: payments
+        identifier: raw_payments
