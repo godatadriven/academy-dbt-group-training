@@ -28,4 +28,4 @@ jobs:
           GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
         run: |
           cd deploy
-          dbt build --target prod
+          dbt build --target prod --profiles-dir ..
