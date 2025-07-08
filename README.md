@@ -1,6 +1,9 @@
 # Academy dbt Group Training
 Welcome to dbt Group training! 
 
+*This repo can be accessed using the link:*
+## **https://xebia.ai/codespace-dbt**
+
 ## Overview
 This training session is designed to provide a comprehensive understanding 
 of dbt, covering its core concepts and functionalities. You will 
