@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: stripe
+    project: bza-datawarehouse # database  
+    dataset: dbt_marthe_stripe # project check in BQ
+    tables:
+      - name: payments
+        identifier: raw_payments
