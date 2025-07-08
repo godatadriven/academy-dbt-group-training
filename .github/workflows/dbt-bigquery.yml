@@ -27,7 +27,4 @@ jobs:
         env:
           GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
         run: |
-          dbt deps
-          dbt seed
-          dbt run
-          dbt test
+          dbt build --target prod
