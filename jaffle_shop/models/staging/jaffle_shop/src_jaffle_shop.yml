@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    project: bza-datawarehouse 
+    dataset: dbt_lverhulst_jaffle_shop  
+    tables:
+      - name: orders
+        identifier: raw_orders
+      - name: customers
+        identifier: raw_customers

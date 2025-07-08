@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: stripe
+    project: bza-datawarehouse 
+    dataset: dbt_lverhulst_stripe
+    tables:
+      - name: payments
+        identifier: raw_payments
+   
