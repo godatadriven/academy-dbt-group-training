@@ -17,7 +17,7 @@ deploy:
       job_retries: 1
       location: EU
       method: service-account
-      keyfile: "{{ env_var('GCP_SERVICE_ACCOUNT') }}"
+      keyfile: /home/runner/gcp-key.json
       priority: interactive
       project: sql-training-422508
       threads: 4

@@ -24,8 +24,7 @@ jobs:
           pip install dbt-bigquery
 
       - name: Run dbt
-        env:
-          GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
         run: |
+          echo '${{ secrets.GCP_SERVICE_ACCOUNT }}' > /home/runner/gcp-key.json
           cd deploy
           dbt build --target prod --profiles-dir ..
