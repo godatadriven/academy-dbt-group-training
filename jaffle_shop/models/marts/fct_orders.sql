@@ -6,7 +6,7 @@ with
     orders as ( select * from {{ref('stg_jaffle_shop_orders')}} ),
 
     payments as ( select * from {{ref('stg_stripe_payments')}}
-    where status <> 'fail' ),
+    where payment_status <> 'fail' ),
 
     group_payments as (
 
