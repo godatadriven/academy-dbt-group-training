@@ -1,3 +1,1 @@
-select 
-    sum(total_amount) 
-from {{ ref('fct_orders') }}
+select distinct payment_status from {{ ref ('stg_stripe_payments')}}

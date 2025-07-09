@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop_orders
+    description: "This contains all the orders of the jaffles shop - one row per order"
+    columns:
+      - name: order_id
+        data_type: int64
+        description: "Primary key"
+        data_tests: 
+            - not_null
+            - unique
+
+      - name: customer_id
+        data_type: int64
+        description: ""
+
+      - name: order_date
+        data_type: date
+        description: ""
+
+      - name: order_status
+        data_type: string
+        description: "{{ doc('order_status') }}"
+        data_tests: 
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'returned', 'return_pending']
