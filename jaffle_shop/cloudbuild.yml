@@ -8,3 +8,9 @@ steps:
       pip install dbt-core dbt-bigquery
       dbt deps
       dbt build
+      
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+# Optional: You can set a timeout if builds might take long
+timeout: '900s'  # 15 minutes
