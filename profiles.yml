@@ -1,0 +1,35 @@
+jaffle_shop:
+  target: dev   # default target
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: sql-training-422508
+      dataset: dbt_lushep
+      location: EU
+      threads: 4
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      priority: interactive
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: sql-training-422508     
+      dataset: dbt_prod        
+      location: EU
+      threads: 4
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      priority: interactive
+
+    stagingenv:
+      type: bigquery
+      method: oauth
+      project: sql-training-422508     
+      dataset: dbt_stagingenv       
+      location: EU
+      threads: 4
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      priority: interactive
