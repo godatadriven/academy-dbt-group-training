@@ -1,3 +1,4 @@
+
 -- add this file into the models directory
 -- once you have run dbt seed, update this query to include the correct schema (dataset) and run the query
 
@@ -17,6 +18,12 @@ from {{ref('fct_orders') }}
 
 ),
 
+with 
+    
+    customers as (select * from {{ ref('stg_jaffle_shop_customers') }}),
+    
+    orders as (select * from {{ ref('stg_jaffle_shop_orders') }}),
+
 customer_orders as (
 
     select
@@ -26,6 +33,7 @@ customer_orders as (
         max(order_date) as most_recent_order_date,
         count(order_id) as number_of_orders,
         sum(total_amount) as total_amount_customers
+        count(order_id) as number_of_orders
 
     from orders
 
@@ -49,6 +57,11 @@ final as (
 
     left join customer_orders on 
     customers.customer_id = customer_orders.customer_id
+        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+
+    from customers
+
+    left join customer_orders using (customer_id)
 
 )
 
