@@ -2,8 +2,16 @@ version: 2
 
 sources:
   - name: stripe
-    project: bza-datawarehouse # soms is dit database
-    dataset: dbt_lhilgert_stripe # soms is dit schema  (als 'name' overeenkomt met 'dataset' dan is dataset niet meer nodig)
+
+    project: sql-training-422508
+    dataset: dbt_lushep_stripe
+    description: This is the payments data capture
     tables:
       - name: payments
         identifier: raw_payments
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+
