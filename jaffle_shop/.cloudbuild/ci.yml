@@ -1,0 +1,26 @@
+steps:
+  - name: 'python:3.9'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Change to your dbt project directory
+        cd jaffle_shop
+
+        # Install Python dependencies
+        pip install -r ../requirements.txt
+
+        # Optional: run shared environment setup script
+        if [ -f ../scripts/setup_env.sh ]; then
+          chmod +x ../scripts/setup_env.sh
+          ../scripts/setup_env.sh
+        fi
+
+        # Install dbt packages
+        dbt deps
+
+        # Run only modified models using production target
+        dbt build --select state:modified --target prod --profiles-dir ../
+
+options:
+  logging: CLOUD_LOGGING_ONLY
