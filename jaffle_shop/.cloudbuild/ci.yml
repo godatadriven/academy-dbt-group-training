@@ -20,7 +20,7 @@ steps:
         dbt deps
 
         # Run only modified models using production target
-        dbt build --select state:modified --target stagingenv --profiles-dir ../
+        dbt build --target stagingenv --profiles-dir ../
 
 options:
   logging: CLOUD_LOGGING_ONLY
