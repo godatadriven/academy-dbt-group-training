@@ -12,6 +12,9 @@ sources:
             data_tests:
               - not_null
               - unique
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: false
           - name: status
             description: "{{ doc('order_status') }}"
             data_tests: 

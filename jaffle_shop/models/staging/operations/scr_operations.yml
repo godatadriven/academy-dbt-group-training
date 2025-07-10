@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: operations
+    project: bza-datawarehouse 
+    dataset: dbt_lverhulst 
+    tables:
+      - name: products
+        identifier: raw_products
+        columns: 
+          - name: sku
+            data_tests:
+              - not_null
+              - unique
+
+      - name: supplies
+        identifier: raw_supplies
+        columns: 
+          - name: id
+            data_tests:
+              - not_null
+              - unique
