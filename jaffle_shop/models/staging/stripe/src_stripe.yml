@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: stripe
+
     project: sql-training-422508
     dataset: dbt_lushep_stripe
     description: This is the payments data capture
@@ -13,3 +14,4 @@ sources:
             data_tests:
               - unique
               - not_null
+

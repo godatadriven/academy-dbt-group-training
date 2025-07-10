@@ -1,3 +1,4 @@
+
 with 
     
     orders as (select * from {{ ref('stg_jaffle_shop_orders') }}),
@@ -28,6 +29,7 @@ final as (
 
     left join order_payments 
     on orders.order_id = order_payments.order_id
+
 
 )
 

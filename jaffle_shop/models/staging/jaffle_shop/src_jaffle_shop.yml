@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: jaffle_shop
+
     description: This is the operational data entry
     project: sql-training-422508
     dataset: dbt_lushep_jaffle_shop
@@ -29,3 +30,4 @@ sources:
                     - completed
                     - shipped
                     - placed
+

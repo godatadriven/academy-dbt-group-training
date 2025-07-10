@@ -1,0 +1,34 @@
+version: 2
+
+seeds:
+  - name: raw_customers
+    config:
+      schema: jaffle_shop # this is the original source schema/dataset
+      column_types:
+        id: int64
+        first_name: string
+        last_name: string
+    quote_columns: false
+
+  - name: raw_orders
+    config:
+      schema: jaffle_shop # this is the original source schema/dataset
+      column_types:
+        id: int64
+        user_id: int64
+        order_date: date
+        status: string
+    quote_columns: false
+
+  - name: raw_payments
+    config:
+      schema: stripe # this is the original source schema/dataset
+      column_types:
+        id: int64
+        orderid: int64
+        paymentmethod: string
+        status: string
+        amount: int64
+        created: date
+        _batched_at: timestamp
+    quote_columns: false
