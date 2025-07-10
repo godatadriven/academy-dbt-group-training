@@ -13,8 +13,8 @@ steps:
         # Install dbt packages
         dbt deps
 
-        # Run only modified models using production target
-        dbt build --target stagingenv --profiles-dir ../
+        # Run all models now that merge is accepted
+        dbt build --target prod --profiles-dir ../
 
 options:
   logging: CLOUD_LOGGING_ONLY
