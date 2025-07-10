@@ -1,8 +1,20 @@
-with 
-    
-    customers as (select * from {{ ref('stg_jaffle_shop_customers') }}),
-    
-    orders as (select * from {{ ref('stg_jaffle_shop_orders') }}),
+-- add this file into the models directory
+-- once you have run dbt seed, update this query to include the correct schema (dataset) and run the query
+
+with customers as (
+
+select *
+from {{ ref('stg_jaffle_shop_customers') }}
+
+),
+
+orders as (
+
+select *
+from {{ ref('fct_orders') }}
+
+),
+
 
 customer_orders as (
 
@@ -19,7 +31,6 @@ customer_orders as (
 
 ),
 
-
 final as (
 
     select
@@ -32,7 +43,12 @@ final as (
 
     from customers
 
+
+    left join customer_orders on 
+    customers.customer_id = customer_orders.customer_id
+
     left join customer_orders using (customer_id)
+
 
 )
 
