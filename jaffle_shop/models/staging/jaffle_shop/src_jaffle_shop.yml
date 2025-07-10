@@ -2,20 +2,31 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    project: bza-datawarehouse  
-    dataset: dbt_ldanvers_jaffle_shop
+    description: This is the operational data entry
+    project: sql-training-422508
+    dataset: dbt_lushep_jaffle_shop
     tables:
-      - name: orders
-        identifier: raw_orders
-        columns: 
-          - name: id 
-            data_tests: 
-              - not_null
-              - unique
-          - name: status
-            description: "{{ docs('order_status') }}"
-            data_tests:
-              - accepted_values: 
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
       - name: customers
         identifier: raw_customers
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+      - name: orders
+        identifier: raw_orders
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: status
+            data_tests:
+              - accepted_values:
+                  values: 
+                    - returned
+                    - return_pending
+                    - completed
+                    - shipped
+                    - placed
+

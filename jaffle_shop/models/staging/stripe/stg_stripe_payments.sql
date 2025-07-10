@@ -7,8 +7,8 @@ with source as (
       orderid as order_id,
       paymentmethod as payment_method,
       status as payment_status,
-      amount as amount_cents,
-      amount/100 as amount,
+      cast(amount/100 as float64) as payment_amount,
+
       created,
       _batched_at
 

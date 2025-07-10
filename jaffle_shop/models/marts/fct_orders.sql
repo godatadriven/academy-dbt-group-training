@@ -1,52 +1,34 @@
 with 
-    payments as (
+    
+    orders as (select * from {{ ref('stg_jaffle_shop_orders') }}),
+    
+    payments as (select * from {{ ref('stg_stripe_payments') }}),
 
-        select *
-        from {{ ref('stg_stripe_payments') }}
+order_payments as (
 
-    ),
+    select
+        order_id,
 
-    customers as (
+        sum(payment_amount) as order_amount
 
-        select *
-        from {{ ref('stg_jaffle_shop_customers') }}
+    from payments
 
-    ),
+    group by 1
 
-    orders as (
-
-        select *
-        from {{ ref('stg_jaffle_shop_orders') }}
-
-    ),
+),
 
 
-    order_payment as (
+final as (
 
-        select
-            order_id,
-            sum(amount) as total_amount
+    select
+        orders.*,
+        order_payments.order_amount
 
-        from payments
+    from orders
 
-        group by order_id
+    left join order_payments 
+    on orders.order_id = order_payments.order_id
 
-    ),
-
-
-
-    final as (
-
-        select
-            orders.*,
-            order_payment.total_amount,
-
-        from orders
-
-        left join order_payment on 
-        orders.order_id = order_payment.order_id
-
-    )
+)
 
 select * from final
-
