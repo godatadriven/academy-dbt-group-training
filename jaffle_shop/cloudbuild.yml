@@ -1,0 +1,10 @@
+steps:
+- name: 'python:3.9'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      cd jaffle_shop
+      pip install dbt-core dbt-bigquery
+      dbt deps
+      dbt build
