@@ -5,6 +5,7 @@ sources:
     project: bza-datawarehouse # database  
     dataset: dbt_marthe_jaffle_shop # project
     tables:
+
       - name: orders
         identifier: raw_orders 
         columns: 
@@ -20,3 +21,10 @@ sources:
               
       - name: customers
         identifier: raw_customers
+        data_tests:
+          - dbt_utils.fewer_rows_than:
+              compare_model: source ('jaffle_shop', 'orders')
+              config:
+                severity: error
+                error_if: ">1000"
+                warn_if: ">0"

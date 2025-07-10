@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: operations
+    project: bza-datawarehouse # database  
+    dataset: dbt_floris # project
+    tables:
+      - name: supplies
+        identifier: raw_supplies
+        columns:
+          - name: id
+            description: primary key
+            data_tests:
+              - not_null
+              - unique
+      - name: products
+        identifier: raw_products
+        columns:
+          - name: sku
+            description: primary key
+            data_tests:
+              - not_null
+              - unique
+  
