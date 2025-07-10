@@ -1,5 +1,5 @@
 steps:
-- name: 'python:3.9'
+- name: 'python:3.12'
   entrypoint: 'bash'
   args:
     - '-c'
@@ -7,6 +7,7 @@ steps:
       cd jaffle_shop
       pip install dbt-core dbt-bigquery
       dbt deps
+      cat ../profiles.yml
       dbt build --profiles-dir ../ --target prod
 
 options:
