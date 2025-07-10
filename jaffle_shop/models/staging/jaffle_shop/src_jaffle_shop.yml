@@ -24,8 +24,8 @@ sources:
             data_tests:
               - accepted_values:
                   values: 
-                    - return
+                    - returned
                     - return_pending
-                    - complete
+                    - completed
                     - shipped
                     - placed
