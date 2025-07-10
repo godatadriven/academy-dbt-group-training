@@ -1,5 +1,7 @@
 # Academy dbt Group Training
-Welcome to dbt Group training! 
+Welcome to dbt Group training!
+
+We are now on day 3!
 
 *This repo can be accessed using the link:*
 ## **https://xebia.ai/codespace-dbt**
