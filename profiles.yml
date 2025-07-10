@@ -1,26 +1,35 @@
-deploy:
+jaffle_shop:
+  target: dev   # default target
   outputs:
     dev:
+      type: bigquery
+      method: oauth
+      project: sql-training-422508
       dataset: dbt_lushep
+      location: EU
+      threads: 4
       job_execution_timeout_seconds: 300
       job_retries: 1
-      location: EU
-      method: oauth
       priority: interactive
-      project: sql-training-422508
-      threads: 4
-      type: bigquery
 
     prod:
-      dataset: dbt_lushep_prod
+      type: bigquery
+      method: oauth
+      project: sql-training-422508     
+      dataset: dbt_prod        
+      location: EU
+      threads: 4
       job_execution_timeout_seconds: 300
       job_retries: 1
-      location: EU
-      method: service-account
-      keyfile: /home/runner/gcp-key.json
       priority: interactive
-      project: sql-training-422508
-      threads: 4
-      type: bigquery
 
-  target: dev
+    stagingenv:
+      type: bigquery
+      method: oauth
+      project: sql-training-422508     
+      dataset: dbt_stagingenv       
+      location: EU
+      threads: 4
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      priority: interactive
