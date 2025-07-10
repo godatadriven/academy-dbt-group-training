@@ -7,8 +7,8 @@ steps:
       cd jaffle_shop
       pip install dbt-core dbt-bigquery
       dbt deps
-      dbt build
-      
+      dbt build --profiles-dir ../ --target prod
+
 options:
   logging: CLOUD_LOGGING_ONLY
 
