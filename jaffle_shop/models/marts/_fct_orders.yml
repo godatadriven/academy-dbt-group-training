@@ -2,8 +2,8 @@ version: 2
 
 models:
   - name: fct_orders
-    description: "One row per order"
-    columns:
+    description: "This contains all the orders per customer of the jaffles shop - one row per customer"
+     columns:
       - name: order_id
         data_type: int64
         description: ""
@@ -21,6 +21,12 @@ models:
 
       - name: order_status
         data_type: string
+        description: "{{ doc('order_status') }}"
+        data_tests: 
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'returned', 'return_pending']
+
+      - name: total_amount
         description: ""
 
       - name: order_amount

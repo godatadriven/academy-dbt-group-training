@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop_customers
+    description: "This contains all customers of the jaffles shop - one row per customer"
+    columns:
+      - name: customer_id
+        data_type: int64
+        description: "Primary key"
+        data_tests: 
+            - not_null
+            - unique
+
+      - name: first_name
+        data_type: string
+        description: ""
+
+      - name: last_name
+        data_type: string
+        description: ""
