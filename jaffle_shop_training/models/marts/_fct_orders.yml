@@ -1,0 +1,15 @@
+models:
+  - name: fct_orders
+    description: ""
+    columns:
+      - name: order_id
+        data_type: int64
+        description: ""
+
+      - name: customer_id
+        data_type: int64
+        description: ""
+
+      - name: amount
+        data_type: float
+        description: ""
