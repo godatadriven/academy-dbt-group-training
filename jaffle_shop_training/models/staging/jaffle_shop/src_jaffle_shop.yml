@@ -2,19 +2,24 @@ sources:
   - name: jaffle_shop
     # project: sql-training-422508 # Not required since it's in the same project
     dataset: data_warehousing # Can also call it schema
+    description: This is store-based data
     # table_prefix: raw_ 
     tables:
       - name: customers
         identifier: raw_customers
+        description: A list of customers regardless of whether or not they have made any orders.
         columns:
           - name: id
+            description: ID column unique to each customer
             data_type: int64
             data_tests:
               - unique
               - not_null
           - name: first_name
+            description: A first name. 
             data_type: string
           - name: last_name
+            description: Despite the name this is actually a last initial.
             data_type: string
 
       - name: orders
@@ -31,6 +36,7 @@ sources:
           - name: order_date
             data_type: date
           - name: status
+            description: "{{ doc('order_status') }}"
             data_type: string
             data_tests:
               - accepted_values:

@@ -1,0 +1,23 @@
+models:
+  - name: int_pivot_payments
+    description: "A pivot to show different payments per order"
+    columns:
+      - name: order_id
+        data_type: int64
+        description: ""
+
+      - name: credit_card_amount
+        data_type: int64
+        description: ""
+
+      - name: bank_transfer_amount
+        data_type: int64
+        description: ""
+
+      - name: coupon_amount
+        data_type: int64
+        description: ""
+
+      - name: gift_card_amount
+        data_type: int64
+        description: ""
