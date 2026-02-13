@@ -2,6 +2,6 @@ dbt-core==1.10.3
 dbt-bigquery==1.9.2
 dbt-snowflake==1.9.4
 sqlfluff==3.4.1
-sqlparse==0.5.3
+sqlparse==0.5.4
 ipykernel==6.29.5
 google-cloud-bigquery==3.27.0
