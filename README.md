@@ -22,8 +22,12 @@ This will create a new `codespace`, a sandbox with everything you need for the t
 
 1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
 
-2. **Authenticate with Google Cloud**: Run the commands below, follow the prompts after running each command:
+2. **Authenticate with Google Cloud**: Run the command below, and follow the prompts:
    1. `gcloud auth login`
+      - Copy the URL that appears
+      - Open it in your browser and authenticate
+      - Copy the verification code
+      - Paste it back in the terminal
    2. `gcloud auth application-default login --no-browser`
       - Copy the URL that appears
       - Open it in your browser 
