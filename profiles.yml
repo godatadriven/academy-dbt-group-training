@@ -1,5 +1,5 @@
 default:
-  target: dbt_
+  target: bigquery_dev
   outputs:
     bigquery_dev:
       type: bigquery
