@@ -1,13 +1,10 @@
-jaffle_shop:
+default:
+  target: dbt_
   outputs:
-    dev:
-      dataset: dbt_lushep
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      location: EU
-      method: oauth
-      priority: interactive
-      project: sql-training-422508
-      threads: 4
+    bigquery_dev:
       type: bigquery
-  target: dev
+      method: oauth
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: "{{ env_var('BQ_DATASET', 'dbt_dev') }}"
+      threads: 4
+      location: US

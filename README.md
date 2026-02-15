@@ -4,13 +4,13 @@ Welcome to dbt Group training!
 *This repo can be accessed using the link:*
 ## **https://xebia.ai/codespace-dbt**
 
-## Overview
+## Overview + Set-up Instructions
 This training session is designed to provide a comprehensive understanding 
 of dbt, covering its core concepts and functionalities. You will 
 learn how to use dbt to build and maintain data models, perform data 
 transformations, and ensure data quality through rigorous testing and documentation.
 
-## Working with the project
+### Step 1: Create a new codespace
 
 Click 'Code', then 'Codespaces, then 'Create codespace on main'.
 
@@ -18,14 +18,38 @@ Click 'Code', then 'Codespaces, then 'Create codespace on main'.
 
 This will create a new `codespace`, a sandbox with everything you need for the training. 
 
-### Connect to data
-To connect to your data in BigQuery you will need to configure gcloud CLI:
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and find the project which contains your data (in the training case this will be `sql-training-422508`).
-2. Run `gcloud auth login` in the terminal in your Codespace and login to your Google account.
-3. Run `gcloud auth application-default login` in the terminal in your Codespace and login to your Google account.
-4. Run `gcloud config set project <PROJECT_ID>` with the project ID from step 1.
-5. Run `gcloud auth application-default set-quota-project <PROJECT_ID>` with the project ID from step 1.
-6. Create a new branch `git checkout -b dbt_<name>`
+### Step 2: Connect to BigQuery
+
+1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
+
+2. **Authenticate with Google Cloud**: Run the command below, and follow the prompts:
+   1. `gcloud auth login`
+      - Copy the URL that appears
+      - Open it in your browser and authenticate
+      - Copy the verification code
+      - Paste it back in the terminal
+   2. `gcloud auth application-default login --no-browser`
+      - Copy the URL that appears
+      - Open it in your browser 
+      - Select all the permissions and authenticate
+      - Copy the verification code
+      - Paste it back in the terminal
+
+3. **Set your project**: Replace `<PROJECT_ID>` with your project ID:
+```bash
+   gcloud config set project sql-training-422508
+   gcloud auth application-default set-quota-project sql-training-422508
+```
+
+4. **Set environment variable**: 
+```bash
+   export GCP_PROJECT_ID="sql-training-422508"
+```
+
+5. **Create your working branch**:
+```bash
+   git checkout -b dbt_<name>
+```
 
 ## Data Overview
 
