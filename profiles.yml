@@ -1,35 +1,10 @@
-jaffle_shop:
-  target: dev   # default target
+default:
+  target: dbt_
   outputs:
-    dev:
+    bigquery_dev:
       type: bigquery
       method: oauth
-      project: sql-training-422508
-      dataset: dbt_lushep
-      location: EU
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: "{{ env_var('BQ_DATASET', 'dbt_dev') }}"
       threads: 4
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      priority: interactive
-
-    prod:
-      type: bigquery
-      method: oauth
-      project: sql-training-422508     
-      dataset: dbt_prod        
-      location: EU
-      threads: 4
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      priority: interactive
-
-    stagingenv:
-      type: bigquery
-      method: oauth
-      project: sql-training-422508     
-      dataset: dbt_stagingenv       
-      location: EU
-      threads: 4
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      priority: interactive
+      location: US

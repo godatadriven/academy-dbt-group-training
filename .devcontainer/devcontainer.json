@@ -6,6 +6,12 @@
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
+  "containerEnv": {
+    "GCP_PROJECT_ID": "${localEnv:GCP_PROJECT_ID}",
+    "SNOWFLAKE_ACCOUNT": "${localEnv:SNOWFLAKE_ACCOUNT}",
+    "SNOWFLAKE_USER": "${localEnv:SNOWFLAKE_USER}",
+    "SNOWFLAKE_PASSWORD": "${localEnv:SNOWFLAKE_PASSWORD}"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,17 +21,18 @@
         "googlecloudtools.cloudcode",
         "redhat.vscode-yaml"
       ],
-      "files.associations": {
-        "*.yaml": "jinja-yaml",
-        "*.yml": "jinja-yaml",
-        "*.sql": "jinja-sql",
-        "*.md": "jinja-md"
-      }, 
-
-    "markdown.preview.openMarkdownLinks": "inPreview",
-    "workbench.editorAssociations": {
-    "*.md": "vscode.markdown.preview.editor"
-}
+      "settings": {
+        "files.associations": {
+          "*.yaml": "jinja-yaml",
+          "*.yml": "jinja-yaml",
+          "*.sql": "jinja-sql",
+          "*.md": "jinja-md"
+        },
+        "markdown.preview.openMarkdownLinks": "inPreview",
+        "workbench.editorAssociations": {
+          "*.md": "vscode.markdown.preview.editor"
+        }
+      }
     }
   }
 }
