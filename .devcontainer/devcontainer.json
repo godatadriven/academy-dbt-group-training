@@ -10,7 +10,8 @@
     "GCP_PROJECT_ID": "${localEnv:GCP_PROJECT_ID}",
     "SNOWFLAKE_ACCOUNT": "${localEnv:SNOWFLAKE_ACCOUNT}",
     "SNOWFLAKE_USER": "${localEnv:SNOWFLAKE_USER}",
-    "SNOWFLAKE_PASSWORD": "${localEnv:SNOWFLAKE_PASSWORD}"
+    "SNOWFLAKE_PASSWORD": "${localEnv:SNOWFLAKE_PASSWORD}",
+    "DBT_PROFILES_DIR": "/root/.dbt"
   },
   "customizations": {
     "vscode": {
@@ -25,13 +26,17 @@
         "files.associations": {
           "*.yaml": "jinja-yaml",
           "*.yml": "jinja-yaml",
-          "*.sql": "jinja-sql",
           "*.md": "jinja-md"
         },
         "markdown.preview.openMarkdownLinks": "inPreview",
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
-        }
+        },
+        "dbt.dbtPythonPath": "/usr/local/bin/python3",
+        "dbt.profilesDir": "/root/.dbt",
+        "dbt.queryLimit": 100,
+        "dbt.runDbtCommandsInTerminal": true,
+        "dbt.projectPath": "${containerWorkspaceFolder}/jaffle_shop"
       }
     }
   }
