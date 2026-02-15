@@ -1,6 +1,3 @@
--- add this file into the models directory
--- once you have run dbt seed, update this query to include the correct schema (dataset) and run the query
-
 with customers as (
 
 select 
