@@ -28,7 +28,7 @@ This will create a new `codespace`, a sandbox with everything you need for the t
       - Open it in your browser and authenticate
       - Copy the verification code
       - Paste it back in the terminal
-   2. `gcloud auth application-default login --no-browser`
+   2. `gcloud auth application-default login`
       - Copy the URL that appears
       - Open it in your browser 
       - Select all the permissions and authenticate
