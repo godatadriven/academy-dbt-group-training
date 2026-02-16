@@ -18,7 +18,20 @@ Click 'Code', then 'Codespaces, then 'Create codespace on main'.
 
 This will create a new `codespace`, a sandbox with everything you need for the training. 
 
-### Step 2: Connect to BigQuery
+### Step 2
+
+Are you taking a training as a company? Then run
+
+```bash
+git branch -a
+```
+*Do you see your company branch? Then switch to that!*
+
+```bash
+git checkout -b <your_company_branch>
+```
+
+### Step 3: Connect to BigQuery
 
 1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
 
