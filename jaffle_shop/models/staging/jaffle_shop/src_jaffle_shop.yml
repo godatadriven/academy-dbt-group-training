@@ -1,7 +1,7 @@
 sources:
   - name: jaffle_shop
-    project: sql-training-422508
-    dataset: jaffle_shop
+    database: raw
+    schema: jaffle_shop
     tables:
       - name: customers
         identifier: customers
