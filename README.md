@@ -41,9 +41,10 @@ This will create a new `codespace`, a sandbox with everything you need for the t
    gcloud auth application-default set-quota-project sql-training-422508
 ```
 
-4. **Set environment variable**: 
+4. **Set environment variable**: Replacing your_name (!!)
 ```bash
-   export GCP_PROJECT_ID="sql-training-422508"
+   export GCP_PROJECT_ID=sql-training-422508
+   export BQ_DATASET=dbt_<your_name>
 ```
 
 5. **Create your working branch**:
