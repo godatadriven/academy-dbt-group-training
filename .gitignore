@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+.vscode/
+dbt_packages/
+dbt_template.egg-info/
+logs/
+target/
+devcontainer.env
+.DS_Store
+.env
+.envrc
+.user.yml
+bigquery_keys.json
+duckdb.db
