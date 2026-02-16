@@ -8,3 +8,17 @@ default:
       dataset: "{{ env_var('BQ_DATASET', 'dbt_dev') }}"
       threads: 4
       location: US
+snowflake_dev:
+  target: snowflake_dev
+  outputs:
+    snowflake_dev:
+      type: snowflake
+      account: fka50167
+      user: LEARNER_LSHEPPARD
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"  
+      role: transformer
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'analytics') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'transforming') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA', 'dbt_dev') }}"
+      threads: 4
+      client_session_keep_alive: False
