@@ -1,0 +1,9 @@
+sources:
+  - name: stripe
+    description: "This data sometimes lags on the weekend."
+    database: raw
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: payment
+        description: "One row represents a payment. Orders can be split over different types of payment."

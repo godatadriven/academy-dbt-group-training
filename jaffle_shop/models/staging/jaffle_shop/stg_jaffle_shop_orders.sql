@@ -1,5 +1,5 @@
 with source as (
-        select * from {{ source('jaffle_shop', 'orders') }}
+        select * from {{ source('jaffle_shop', 'orders') }} -- source_name, table_name
   ),
   renamed as (
       select
@@ -11,4 +11,3 @@ with source as (
       from source
   )
   select * from renamed
-    

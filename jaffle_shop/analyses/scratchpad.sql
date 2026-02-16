@@ -1,5 +1,8 @@
-/*
-dbt run-operation generate_source --args '{"schema_name": "data_warehousing", "generate_columns": true}'
+-- What is the difference between run, test & build?
 
-dbt run-operation generate_model_yaml --args '{"model_names": ["dim_customers"]}'
-*/
+-- build = test + run
+
+-- dbt build --select tag:important
+-- dbt test --exclude tag:important
+
+select * from {{ ref('stg_stripe_payments') }}

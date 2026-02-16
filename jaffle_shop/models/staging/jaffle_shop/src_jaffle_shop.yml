@@ -1,9 +1,35 @@
 sources:
   - name: jaffle_shop
-    database: raw
-    schema: jaffle_shop
+    database: raw # can be picked up from project default
+    schema: {{ var('my_schema', none) }} # can be picked up from source_name
     tables:
       - name: customers
         identifier: customers
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique:
+                  config:
+                    tags: ['lucys_special_tag']
+                    severity:
+                    error_if: ">10"
+                    warn_if: ">0"
       - name: orders
         identifier: orders
+        columns:
+          - name: status
+            description: "{{ doc('order_status') }}"
+            data_tests:
+              - accepted_values:
+                  values:
+                    - completed
+                    - placed
+                    - shipped
+                    - returned
+                    - return_pending
+          - name: user_id
+            data_tests: # watch out for arguments keyword in 1.10.5
+              - relationships:
+                  to: source('jaffle_shop', 'customers')
+                  field: id
