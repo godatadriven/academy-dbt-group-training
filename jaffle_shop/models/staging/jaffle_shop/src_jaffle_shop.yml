@@ -1,7 +1,7 @@
 sources:
   - name: jaffle_shop
     database: raw # can be picked up from project default
-    schema: {{ var('my_schema', none) }} # can be picked up from source_name
+    schema: jaffle_shop # can be picked up from source_name
     tables:
       - name: customers
         identifier: customers

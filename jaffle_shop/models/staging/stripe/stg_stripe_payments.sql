@@ -6,7 +6,7 @@ with source as (
           id as payment_id,
           orderid as order_id,
           paymentmethod as payment_method,
-          amount,
+          amount/100 as payment_amount,
           status
       from source
   )

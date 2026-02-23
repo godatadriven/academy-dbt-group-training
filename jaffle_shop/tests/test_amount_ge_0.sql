@@ -1,3 +1,3 @@
 select * 
 from {{ ref('stg_stripe_payments') }}
-where amount < 0
+where payment_amount < 0
