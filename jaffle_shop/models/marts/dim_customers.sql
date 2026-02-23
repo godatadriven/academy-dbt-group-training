@@ -18,6 +18,21 @@ from {{ ref("stg_jaffle_shop_orders") }}
 
 ),
 
+payments as (
+
+select 
+    *
+from {{ ref("stg_stripe_payments") }}
+
+),
+
+order_payments as (
+    select 
+        order_id,
+        sum(payment_amount) as order_amount
+    from payments
+)
+
 customer_orders as (
 
     select
@@ -40,14 +55,15 @@ final as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
+        order_payments.order_amount,
         customer_orders.first_order_date,
         customer_orders.most_recent_order_date,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders
 
     from customers
 
-    left join customer_orders on 
-    customers.customer_id = customer_orders.customer_id
+    left join customer_orders on using (customer_id)
+    left join order_payments using (order_id)
 
 )
 
