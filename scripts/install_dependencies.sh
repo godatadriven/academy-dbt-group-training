@@ -12,10 +12,3 @@ if [ -f "scripts/example_profiles.yml" ]; then
     cp scripts/example_profiles.yml ~/.dbt/profiles.yml
     echo "✓ dbt profiles.yml copied"
 fi
-
-# Initialize gcloud for BigQuery OAuth
-echo "============================================"
-echo "To authenticate with BigQuery, run:"
-echo "  gcloud auth application-default login"
-echo "  gcloud auth login"
-echo "============================================"
