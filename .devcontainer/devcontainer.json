@@ -6,9 +6,9 @@
   "postCreateCommand": "bash scripts/install_dependencies.sh",
   "containerEnv": {
     "GCP_PROJECT_ID": "${localEnv:GCP_PROJECT_ID}",
-    "SNOWFLAKE_ACCOUNT": "${localEnv:SNOWFLAKE_ACCOUNT}",
-    "SNOWFLAKE_USER": "${localEnv:SNOWFLAKE_USER}",
-    "SNOWFLAKE_PASSWORD": "${localEnv:SNOWFLAKE_PASSWORD}",
+    "SNOWFLAKE_ACCOUNT": "${codespaces:SNOWFLAKE_ACCOUNT}",
+    "SNOWFLAKE_USER": "${codespaces:SNOWFLAKE_USER}",
+    "SNOWFLAKE_PASSWORD": "${codespaces:SNOWFLAKE_PASSWORD}",
     "DATABRICKS_HOST": "${codespaces:DATABRICKS_HOST}",
     "DATABRICKS_HTTP_PATH": "${codespaces:DATABRICKS_HTTP_PATH}",
     "DATABRICKS_TOKEN": "${codespaces:DATABRICKS_TOKEN}",
