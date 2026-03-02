@@ -4,7 +4,7 @@ select
     id as customer_id,
     first_name,
     last_name
-from raw.jaffle_shop.customers
+from raw_jaffle_shop.customers
 
 ),
 
@@ -15,7 +15,7 @@ select
     user_id as customer_id,
     order_date,
     status as order_status
-from raw.jaffle_shop.orders
+from raw_jaffle_shop.orders
 
 ),
 
