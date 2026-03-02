@@ -26,8 +26,8 @@ snowflake_dev:
   outputs:
     snowflake_dev:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_DATABASE'}}"
-      user: "{{ env_var('SNOWFLAKE_USER'}}"
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"  
       role: transformer
       database: "{{ env_var('SNOWFLAKE_DATABASE', 'analytics') }}"
