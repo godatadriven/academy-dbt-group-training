@@ -8,8 +8,3 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 RUN tar -xf google-cloud-cli-linux-x86_64.tar.gz && rm google-cloud-cli-linux-x86_64.tar.gz
 RUN ./google-cloud-sdk/install.sh --quiet
 ENV PATH="/google-cloud-sdk/bin:${PATH}"
-
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
