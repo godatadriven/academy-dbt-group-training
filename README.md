@@ -31,7 +31,19 @@ git branch -a
 git checkout -b <your_company_branch>
 ```
 
-### Step 3: Connect to BigQuery
+### Step 3: Connect to the Data
+
+#### Snowflake or Databricks
+
+You need to set your target schema. Run the following:
+
+```bash
+export DBT_SCHEMA=dbt_<inital><last_name>
+```
+
+This needs to be **unique** as it is the place in which all the data you create with transformations will be stored.
+
+#### BigQuery
 
 1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
 
