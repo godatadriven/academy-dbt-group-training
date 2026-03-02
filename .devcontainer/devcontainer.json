@@ -1,8 +1,6 @@
 {
-  "name": "dbt Group Training - gcloud",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "name": "dbt Group Training - gcloud + Databricks",
+  "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
@@ -11,6 +9,11 @@
     "SNOWFLAKE_ACCOUNT": "${localEnv:SNOWFLAKE_ACCOUNT}",
     "SNOWFLAKE_USER": "${localEnv:SNOWFLAKE_USER}",
     "SNOWFLAKE_PASSWORD": "${localEnv:SNOWFLAKE_PASSWORD}",
+    "DATABRICKS_HOST": "${codespaces:DATABRICKS_HOST}",
+    "DATABRICKS_HTTP_PATH": "${codespaces:DATABRICKS_HTTP_PATH}",
+    "DATABRICKS_TOKEN": "${codespaces:DATABRICKS_TOKEN}",
+    "DATABRICKS_SCHEMA": "dbt_dev",
+    "DATABRICKS_CATALOG": "hive_metastore",
     "DBT_PROFILES_DIR": "/root/.dbt"
   },
   "customizations": {

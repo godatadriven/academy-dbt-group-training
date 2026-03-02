@@ -8,8 +8,8 @@ pip3 install --user -r requirements.txt
 mkdir -p ~/.dbt/
 
 # Copy profiles template if it exists
-if [ -f "profiles.yml" ]; then
-    cp profiles.yml ~/.dbt/profiles.yml
+if [ -f "example_profiles.yml" ]; then
+    cp example_profiles.yml ~/.dbt/profiles.yml
     echo "✓ dbt profiles.yml copied"
 fi
 
