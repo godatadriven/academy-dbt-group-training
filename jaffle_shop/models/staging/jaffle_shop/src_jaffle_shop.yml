@@ -1,0 +1,34 @@
+sources:
+  - name: jaffle_shop
+    schema: raw_jaffle_shop
+    tables:
+      - name: orders # alias of the table name
+        identifier: orders # reference the exact name in the warehouse
+        columns:
+          - name: id
+            data_tests: 
+              - unique
+              - not_null
+          - name: status
+            description: "{{ doc('order_status') }}"
+            data_tests:
+              - accepted_values: 
+                  arguments:
+                    values: 
+                      - completed
+                      - shipped
+                      - returned
+                      - placed
+                      - return_pending
+
+      - name: customers
+        identifier: customers
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: error
+                    warn_if: ">0"
+                    error_if: ">100"
+              - not_null
