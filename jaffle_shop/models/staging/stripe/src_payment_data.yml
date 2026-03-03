@@ -1,0 +1,38 @@
+sources:
+  - name: stripe
+    schema: raw_stripe
+    tables:
+      - name: payment_data
+        description: "The source table for payment data from Stripe."
+        identifier: payment_data
+        columns:
+          - name: id
+            description: "The unique identifier for each payment."
+            data_tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: "The unique identifier for the order associated with the payment."
+            data_tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_jaffle_shop_orders')
+                  field: order_id              
+          - name: payment_method
+            description: "The method used for the payment (e.g., credit card, PayPal)."
+            data_tests:
+              - not_null
+          - name: status
+            description: "The status of the payment (e.g., succeeded, failed)."
+            data_tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values: 
+                      - success
+                      - fail
+          - name: payment_amount
+            description: "The amount of the payment."
+            data_tests:
+              - not_null              
+      

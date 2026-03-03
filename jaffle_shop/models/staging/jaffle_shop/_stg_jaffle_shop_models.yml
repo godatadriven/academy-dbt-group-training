@@ -1,0 +1,37 @@
+models:
+  - name: stg_jaffle_shop_customers
+    description: "The dimension table for customers."
+    columns:
+      - name: customer_id
+        description: "The unique identifier for each customer."
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_jaffle_shop_orders
+    description: "orders unicity and not null tests"
+    columns:
+      - name: order_id
+        description: "The unique identifier for each order."
+        data_tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: "Check the status of the order."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - completed
+                  - shipped
+                  - returned
+                  - placed
+                  - return_pending
+      - name: customer_id
+        description: "The unique identifier for the customer associated with the order."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_jaffle_shop_customers')
+              field: customer_id
