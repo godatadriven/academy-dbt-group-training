@@ -1,0 +1,15 @@
+sources:
+  - name: stripe
+    schema: raw_stripe
+    tables:
+      - name: payment_data # alias of the table name
+        identifier: payment_data # reference the exact name in the warehouse
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+              
+          - name: order_id
+            data_tests:
+              - not_null
