@@ -28,7 +28,7 @@ git branch -a
 *Do you see your company branch? Then switch to that!*
 
 ```bash
-git checkout -b <your_company_branch>
+git checkout <your_company_branch>
 ```
 
 ### Step 3: Connect to the Data
