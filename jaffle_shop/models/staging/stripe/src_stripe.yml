@@ -1,0 +1,6 @@
+sources:
+  - name: stripe
+    schema: raw_stripe  
+    tables:
+      - name: payments
+        identifier: payment_data # reference the exact name in the warehouse
