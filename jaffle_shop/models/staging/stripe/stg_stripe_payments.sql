@@ -7,8 +7,8 @@ with source as (
         order_id,
         payment_method,
         status as payment_status,
-        payment_amount as payment_amount
-
+        payment_amount as payment_amount,
+        {{convert_to_cents('payment_amount')}} as payment_amount_cents,
       from source
   )
   select * from renamed
