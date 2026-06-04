@@ -73,6 +73,18 @@ You should see `All checks passed!`. Now you are ready to run models:
 dbt run
 ```
 
+### Step 3: Point dbt Power User at the right Python interpreter
+
+The dbt Power User extension (lineage, query previews, and the run/build buttons
+in the editor) needs to use the Python environment that has dbt installed.
+
+1. Open the Command Palette: **Ctrl + Shift + P** (Mac: **Cmd + Shift + P**).
+2. Run **"Python: Select Interpreter"**.
+3. Choose the interpreter that has dbt: **`/usr/local/bin/python3`** (Python 3.12).
+
+If the extension still does not detect the project, reload the window
+(Command Palette → **"Developer: Reload Window"**).
+
 ## Data Overview
 
 ### Jaffle data
