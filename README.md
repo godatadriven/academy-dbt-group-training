@@ -14,7 +14,7 @@ transformations, and ensure data quality through rigorous testing and documentat
 
 This branch (`bng`) connects to Xebia's training Databricks workspace. The
 Databricks host, SQL warehouse and catalog are already configured for you, so the
-**only** thing you need to provide is your access **token**.
+**only** thing you need to provide is your access **token** which will be provided by your trainer.
 
 ### Step 1: Create a codespace on the `bng` branch
 
@@ -25,7 +25,7 @@ Databricks host, SQL warehouse and catalog are already configured for you, so th
 
 1. Open the repository on GitHub.
 2. Switch the branch selector to **`bng`**.
-3. Click **Code → Codespaces → Create codespace on `bng`**.
+3. Click **Code → Codespaces → Create codespace on `bng`**. (The GIF shows main, it should say bng in your case)
 
 ![Create codespace](images/open-codespace.gif)
 
@@ -45,8 +45,8 @@ Once your codespace has finished building, create this file in the terminal
 
 ```bash
 cat > .env <<'EOF'
-DATABRICKS_TOKEN=<paste the token your trainer gives you>
-DBT_SCHEMA=dbt_<yourname>
+export DATABRICKS_TOKEN=<paste the token your trainer gives you>
+export DBT_SCHEMA=dbt_<yourname>
 EOF
 ```
 
@@ -57,7 +57,7 @@ Now load it into your terminal. You need to run this **once in every terminal yo
 open** (it exports the token and schema so dbt can read them):
 
 ```bash
-set -a && source .env && set +a
+source .env
 ```
 
 **Check it works**
