@@ -16,21 +16,23 @@ This branch (`bng`) connects to Xebia's training Databricks workspace. The
 Databricks host, SQL warehouse and catalog are already configured for you, so the
 **only** thing you need to provide is your access **token**.
 
-### Step 1: Create a new codespace
+### Step 1: Create a codespace on the `bng` branch
 
-Click 'Code', then 'Codespaces', then 'Create codespace on main'.
+> **Important:** create the codespace on the **`bng`** branch, not on `main`.
+> This branch contains the dbt project and the Databricks connection settings.
+> If you create the codespace on `main` and switch branches afterwards, the
+> environment is built from `main` and will not be configured correctly.
 
-![Create codespace on main](images/open-codespace.gif)
+1. Open the repository on GitHub.
+2. Switch the branch selector to **`bng`**.
+3. Click **Code → Codespaces → Create codespace on `bng`**.
 
-This will create a new `codespace`, a sandbox with everything you need for the training.
+![Create codespace](images/open-codespace.gif)
 
-### Step 2: Switch to the BNG branch
+This creates a `codespace`, a sandbox with everything you need for the training.
+Wait for it to finish building before continuing.
 
-```bash
-git checkout bng
-```
-
-### Step 3: Connect to Databricks
+### Step 2: Connect to Databricks
 
 The connection details (host, SQL warehouse and the `bng_databricks_workspace`
 catalog) are already configured in this branch. You only need to add your token
@@ -38,7 +40,8 @@ and pick a schema. Both live in a local `.env` file at the **root of the repo**
 (next to this README). The `.env` file is git-ignored, so your token is never
 committed.
 
-Create it in the terminal (replace the placeholders):
+Once your codespace has finished building, create this file in the terminal
+(replace the placeholders):
 
 ```bash
 cat > .env <<'EOF'
@@ -50,8 +53,8 @@ EOF
 `DBT_SCHEMA` is where all the data you create is stored, so make it **unique** to
 you (for example `dbt_jdoe`).
 
-The `.env` is loaded automatically in every new terminal. If you create or edit it
-in a terminal that is already open, load it once with:
+Now load it into your terminal. You need to run this **once in every terminal you
+open** (it exports the token and schema so dbt can read them):
 
 ```bash
 set -a && source .env && set +a

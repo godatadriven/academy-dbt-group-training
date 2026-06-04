@@ -8,7 +8,7 @@
     // Databricks connection for the BNG training, hosted in Xebia's
     // training Databricks workspace. Host, SQL warehouse path and catalog
     // are pre-configured. The access token is NOT stored here: it is read
-    // from a local, git-ignored .env file (see .env.example and the README).
+    // from a local, git-ignored .env file that each user creates (see README).
     "DATABRICKS_HOST": "adb-7405616653622888.8.azuredatabricks.net",
     "DATABRICKS_HTTP_PATH": "/sql/1.0/warehouses/9155f778a2d0c7d3",
     "DATABRICKS_CATALOG": "bng_databricks_workspace",
