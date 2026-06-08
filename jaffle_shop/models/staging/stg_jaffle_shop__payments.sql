@@ -11,11 +11,11 @@ renamed as (
         -- is already unique here, so combining it with `order_id` is purely
         -- illustrative; surrogate keys earn their keep on models whose grain is
         -- a combination of columns with no single natural key.
-        {{ surrogate_key('order_id', 'id') }} as payment_pk,
+        {{ surrogate_key('orderid', 'id') }} as payment_pk,
 
         id as payment_id,
-        order_id,
-        payment_method,
+        orderid as order_id,
+        paymentmethod as payment_method,
         status as payment_status,
 
         -- `amount` is stored in cents in the source; convert to dollars.
