@@ -48,5 +48,7 @@ seeds:
       +alias: customers
     raw_orders:
       +alias: orders
+      +column_types:
+        _ETL_LOADED_AT: timestamp
     raw_payments:
       +alias: payments
