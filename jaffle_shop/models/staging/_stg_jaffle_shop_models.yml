@@ -35,3 +35,35 @@ models:
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+
+  - name: stg_jaffle_shop__payments
+    description: Staged payment records, one row per payment with amounts converted to dollars.
+    columns:
+      - name: payment_pk
+        description: Surrogate key generated from order_id + payment id via the custom surrogate_key macro.
+        tests:
+          - unique
+          - not_null
+      - name: payment_id
+        description: Natural primary key of the payment in the source system.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key to the order this payment was made against.
+        tests:
+          - relationships:
+              to: ref('stg_jaffle_shop__orders')
+              field: order_id
+      - name: payment_method
+        description: How the payment was made.
+        tests:
+          - accepted_values:
+              values: ['bank_transfer', 'coupon', 'credit_card', 'gift_card']
+      - name: payment_status
+        description: Whether the payment succeeded or failed.
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
+      - name: amount
+        description: Payment amount in dollars (converted from cents in the source).

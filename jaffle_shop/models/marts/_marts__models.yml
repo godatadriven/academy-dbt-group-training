@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customer dimension, one row per customer enriched with order history.
+    columns:
+      - name: customer_id
+        description: '{{ doc("customer_id") }}'
+        tests:
+          - unique
+          - not_null
+
+  - name: order_payments
+    description: >
+      One row per order with payment amounts pivoted out by payment method (in
+      dollars), plus the order total. Built with dbt_utils.pivot.
+    columns:
+      - name: order_id
+        description: Primary key - the order these payments belong to.
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_orders_incremental
+    description: >
+      Incremental copy of the orders model (one row per order). Demonstrates
+      incremental materialization with a merge strategy on order_id.
+    columns:
+      - name: order_id
+        description: Primary key - unique identifier for each order.
+        tests:
+          - unique
+          - not_null
