@@ -53,5 +53,10 @@ seeds:
       +alias: customers
     raw_orders:
       +alias: orders
+      # Load the ETL load timestamp as a real `timestamp` (not inferred string)
+      # so source freshness can be measured against it. Key must match the CSV
+      # header case for dbt's seed column-type override to apply.
+      +column_types:
+        _ETL_LOADED_AT: timestamp
     raw_payments:
       +alias: payments
