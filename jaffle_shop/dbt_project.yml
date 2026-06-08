@@ -31,9 +31,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   jaffle_shop:
-    # Config indicated by + and applies to all files under models/example/
-    example:
+    # Default: materialize every model as a table (Workgroup 1).
+    +materialized: table
+    # Staging models are lightweight views over the sources (Workgroup 2).
+    staging:
       +materialized: view
+    # Marts are persisted as tables for downstream consumption.
+    marts:
+      +materialized: table
 
 # Raw seed data (customers, orders, payments) is loaded into a dedicated
 # `raw_jaffle_shop` schema, so models can read e.g. `raw_jaffle_shop.customers`.

@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: >
+      Raw data from the Jaffle Shop application, loaded into the warehouse as
+      seeds and landed in the dedicated `raw_jaffle_shop` schema.
+    schema: raw_jaffle_shop
+    tables:
+      - name: customers
+        description: One record per customer of the Jaffle Shop.
+        columns:
+          - name: id
+            description: Primary key - unique identifier for each customer.
+            tests:
+              - unique
+              - not_null
+
+      - name: orders
+        description: One record per order placed by a customer.
+        # Freshness is measured against the timestamp the row was loaded by the
+        # source ETL process. Warn if the newest record is over 12h old, error
+        # if over 24h old.
+        loaded_at_field: _etl_loaded_at
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        columns:
+          - name: id
+            description: Primary key - unique identifier for each order.
+            tests:
+              - unique
+              - not_null
+
+      - name: payments
+        description: One record per payment made against an order.
+        columns:
+          - name: id
+            description: Primary key - unique identifier for each payment.
+            tests:
+              - unique
+              - not_null
