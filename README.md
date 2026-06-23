@@ -16,7 +16,11 @@ Click 'Code', then 'Codespaces, then 'Create codespace on erasmus'.
 
 ![Create codespace on main](images/open-codespace.gif)
 
-This will create a new `codespace`, a sandbox with everything you need for the training. 
+This will create a new `codespace`, a sandbox with everything you need for the training.
+
+**Wait!** It will take a while to load up.
+
+Prompted to install dbt? Click `yes` then select the highest dbt version and `databricks` as the connector.
 
 ### Step 2
 
@@ -54,6 +58,12 @@ Your terminal will open in the root directory, to ensure you are in the project 
 
 ```bash
 cd jaffle_shop
+```
+
+Once here, check the dbt connect by running:
+
+```
+dbt debug
 ```
 
 
