@@ -31,7 +31,6 @@
           "*.md": "vscode.markdown.preview.editor"
         },
         "dbt.dbtPythonPath": "/usr/local/bin/python3",
-        "dbt.dbtPath": "/root/.local/bin/dbt",
         "dbt.profilesDir": "/root/.dbt",
         "dbt.queryLimit": 100,
         "dbt.runDbtCommandsInTerminal": true,
