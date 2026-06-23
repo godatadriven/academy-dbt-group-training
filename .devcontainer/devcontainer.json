@@ -1,17 +1,13 @@
 {
-  "name": "dbt Group Training - gcloud + Databricks",
+  "name": "dbt Group Training - Databricks",
   "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
   "containerEnv": {
-    "GCP_PROJECT_ID": "${localEnv:GCP_PROJECT_ID}",
-    "SNOWFLAKE_ACCOUNT": "${codespaces:SNOWFLAKE_ACCOUNT}",
-    "SNOWFLAKE_USER": "${codespaces:SNOWFLAKE_USER}",
-    "SNOWFLAKE_PASSWORD": "${codespaces:SNOWFLAKE_PASSWORD}",
-    "DATABRICKS_HOST": "${codespaces:DATABRICKS_HOST}",
-    "DATABRICKS_HTTP_PATH": "${codespaces:DATABRICKS_HTTP_PATH}",
-    "DATABRICKS_TOKEN": "${codespaces:DATABRICKS_TOKEN}",
+    "DATABRICKS_HOST": "${localEnv:DATABRICKS_HOST}",
+    "DATABRICKS_HTTP_PATH": "${localEnv:DATABRICKS_HTTP_PATH}",
+    "DATABRICKS_TOKEN": "${localEnv:DATABRICKS_TOKEN}",
     "DATABRICKS_SCHEMA": "dbt_dev",
     "DATABRICKS_CATALOG": "hive_metastore",
     "DBT_PROFILES_DIR": "/root/.dbt"
@@ -22,7 +18,6 @@
         "ms-python.python",
         "ms-toolsai.jupyter",
         "innoverio.vscode-dbt-power-user",
-        "googlecloudtools.cloudcode",
         "redhat.vscode-yaml"
       ],
       "settings": {
@@ -36,6 +31,7 @@
           "*.md": "vscode.markdown.preview.editor"
         },
         "dbt.dbtPythonPath": "/usr/local/bin/python3",
+        "dbt.dbtPath": "/root/.local/bin/dbt",
         "dbt.profilesDir": "/root/.dbt",
         "dbt.queryLimit": 100,
         "dbt.runDbtCommandsInTerminal": true,
