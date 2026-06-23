@@ -12,7 +12,7 @@ transformations, and ensure data quality through rigorous testing and documentat
 
 ### Step 1: Create a new codespace
 
-Click 'Code', then 'Codespaces, then 'Create codespace on main'.
+Click 'Code', then 'Codespaces, then 'Create codespace on erasmus'.
 
 ![Create codespace on main](images/open-codespace.gif)
 
@@ -20,62 +20,32 @@ This will create a new `codespace`, a sandbox with everything you need for the t
 
 ### Step 2
 
-Are you taking a training as a company? Then run
+Make sure you are on the right branch. In the terminal, you should see the name `erasmus` in brackets.
+
+<img src=images/erasmus-branch.png width=400px>
+
+If you see another name, simply run the below command to switch to the right branch.
 
 ```bash
-git branch -a
-```
-*Do you see your company branch? Then switch to that!*
-
-```bash
-git checkout <your_company_branch>
+git checkout erasmus
 ```
 
 ### Step 3: Connect to the Data
 
-#### Snowflake or Databricks
+#### Databricks
 
-You need to set your target schema. Run the following:
+The connection to the Databricks warehouse is managed by Xebia and the trainer. The only thing you need to update in your schema.
 
 ```bash
-export DBT_SCHEMA=dbt_<inital><last_name>
+code .dbt/profiles.yml 
 ```
 
-This needs to be **unique** as it is the place in which all the data you create with transformations will be stored.
+Once this file is open, look for the key `schema: ` and add your own schema. It will need to be unique, convention is to use `dbt_` followed by your first initial & last name. Eg.
 
-#### BigQuery
-
-1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
-
-2. **Authenticate with Google Cloud**: Run the command below, and follow the prompts:
-   1. `gcloud auth login`
-      - Copy the URL that appears
-      - Open it in your browser and authenticate
-      - Copy the verification code
-      - Paste it back in the terminal
-   2. `gcloud auth application-default login`
-      - Copy the URL that appears
-      - Open it in your browser 
-      - Select all the permissions and authenticate
-      - Copy the verification code
-      - Paste it back in the terminal
-
-3. **Set your project**: Replace `<PROJECT_ID>` with your project ID:
-```bash
-   gcloud config set project sql-training-422508
-   gcloud auth application-default set-quota-project sql-training-422508
+```
+    schema: dbt_kmccallister
 ```
 
-4. **Set environment variable**: Replacing your_name (!!)
-```bash
-   export GCP_PROJECT_ID=sql-training-422508
-   export BQ_DATASET=dbt_<your_name>
-```
-
-5. **Create your working branch**:
-```bash
-   git checkout -b dbt_<name>
-```
 
 ## Data Overview
 
