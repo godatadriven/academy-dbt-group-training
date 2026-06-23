@@ -46,6 +46,16 @@ Once this file is open, look for the key `schema: ` and add your own schema. It 
     schema: dbt_kmccallister
 ```
 
+### Step 4: Verify connection in the project
+
+To run dbt, you will need to use the command line.
+
+Your terminal will open in the root directory, to ensure you are in the project location change directory (`cd`) into the `jaffle_shop/` folder:
+
+```bash
+cd jaffle_shop
+```
+
 
 ## Data Overview
 
