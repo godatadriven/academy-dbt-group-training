@@ -1,0 +1,25 @@
+sources:
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+      - name: customers # this is what I choose (name I like)
+        identifier: customers # this is what is in the warehouse (true name)
+        columns:
+         - name: id
+           data_tests:
+            - not_null:
+                config:
+                  severity: error
+                  warn_if: ">0"
+                  error_if: ">100"
+            - unique
+      - name: orders
+        identifier: orders
+        columns:
+         - name: id
+           data_tests:
+            - not_null:
+                config:
+                  severity: error
+                  warn_if: ">0"
+                  error_if: ">100"        

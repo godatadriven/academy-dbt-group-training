@@ -1,0 +1,15 @@
+sources:
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: payments
+        columns:
+         - name: payment_id
+           data_tests:
+            - unique
+            - not_null:
+                config:
+                  severity: error
+                  warn_if: ">0"
+                  error_if: ">100"            
