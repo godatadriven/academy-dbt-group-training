@@ -1,0 +1,20 @@
+sources:
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+      - name: customers
+        identifier: customers
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
+      - name: orders
+        identifier: orders
+
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: payments
+
