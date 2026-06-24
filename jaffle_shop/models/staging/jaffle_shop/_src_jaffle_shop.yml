@@ -1,0 +1,27 @@
+sources:
+
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+      - name: customers # name chosen
+        identifier: customers # this is the warehouse
+        columns:
+          - name: id
+            data_tests:
+              - not_null:
+                  config:
+                    serverity: error
+                    warn_if: ">0"
+                    error_if: ">100"
+              - unique
+      - name: orders # name chosen
+        identifier: orders # this is the warehouse
+
+      
+source:
+  - name: stripw
+    schema: stripe
+    tables: 
+      - name: payments # name chosen
+        identifier: payments # this is the warehouse
+

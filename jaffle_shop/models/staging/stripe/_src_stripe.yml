@@ -1,0 +1,8 @@
+sources:
+
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payments # name chosen
+        identifier: payments # this is the warehouse
+  
