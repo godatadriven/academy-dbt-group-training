@@ -9,7 +9,7 @@ from {{ ref("stg_jaffle_shop_orders")}}
 payments as (
     select
         order_id,
-        SUM(payment_amount) as total_amount
+        sum(payment_amount) as total_amount
     from {{ ref("stg_stripe_payments")}}
     group by order_id
 ),
