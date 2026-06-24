@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('stripe', 'payments') }}
+    select * from {{ source('stripe', 'payments') }} --normalize amount by 100
 )
 
-select * from source;
+select * from source --avoid semicolon

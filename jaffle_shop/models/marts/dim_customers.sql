@@ -33,7 +33,7 @@ customer_lifetime_spending as (
 
     select customer_id, 
             sum(amount) as amount
-    from fct_orders
+    from fct_orders --change to ref or intermediate table
     group by customer_id
 ),
 
