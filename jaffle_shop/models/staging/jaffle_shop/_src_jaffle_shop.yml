@@ -11,10 +11,3 @@ sources:
               - unique
       - name: orders
         identifier: orders
-
-  - name: stripe
-    schema: stripe
-    tables:
-      - name: payments
-        identifier: payments
-
