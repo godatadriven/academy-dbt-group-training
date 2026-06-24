@@ -1,0 +1,23 @@
+sources:
+    - name: jaffle_shop
+      schema: jaffle_shop
+      tables:
+
+        - name: customers # this is what i choose
+          identifier: customers # what is in the warehouse
+          columns:
+            - name: id
+              data_tests:
+                - not_null:
+                    config:
+                      severity: error
+                      warn_if: ">0"
+                      error_if: ">100"
+                - unique
+
+        - name: orders
+          columns:
+            - name: id
+              data_tests:
+                - not_null
+                - unique
