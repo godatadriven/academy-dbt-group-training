@@ -1,0 +1,13 @@
+sources:
+
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: payments
+        columns: 
+          - name: payment_id
+            data_tests:
+             - unique
+            
+
