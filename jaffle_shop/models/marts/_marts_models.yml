@@ -31,3 +31,5 @@ models:
       - name: amount
         data_type: bigint
         description: ""
+        data_tests:
+          - dbt_utils.not_constant
