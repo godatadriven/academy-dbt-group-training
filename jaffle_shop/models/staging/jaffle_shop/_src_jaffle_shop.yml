@@ -1,0 +1,25 @@
+sources:
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+
+      - name: customers
+        identifier: customers
+        columns:
+          - name: id
+            data_tests:
+              - not_null:
+                  config:
+                    severity: error
+                    warn_if: ">0"
+                    error_if: ">100"
+              - unique
+
+
+      - name: orders
+        identifier: orders
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique

@@ -1,0 +1,7 @@
+sources:
+  - name: stripe
+    schema: stripe
+    tables:
+    
+      - name: payments
+        identifier: payments
