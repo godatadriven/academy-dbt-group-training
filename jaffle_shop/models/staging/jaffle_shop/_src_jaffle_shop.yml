@@ -5,5 +5,14 @@ sources:
     tables:
       - name: customers # this is what I choose
         identifier: customers # this is what is the warehouse
+        columns: 
+          - name: id
+            data_tests:
+              - not_null:
+                  config:
+                    severity: error
+                    warn_if: ">0"
+                    error_if: ">100"
+              - unique
       - name: orders
         identifier: orders
