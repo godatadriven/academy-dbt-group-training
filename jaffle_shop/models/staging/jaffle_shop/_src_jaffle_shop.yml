@@ -1,0 +1,9 @@
+sources:
+
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+      - name: customers # this is what I choose
+        identifier: customers # this is what is the warehouse
+      - name: orders
+        identifier: orders
