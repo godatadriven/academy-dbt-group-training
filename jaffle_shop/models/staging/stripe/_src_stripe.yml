@@ -5,4 +5,8 @@ sources:
     tables:
       - name: payments # name chosen
         identifier: payments # this is the warehouse
-  
+        columns:
+          - name: payment_id
+            data_tests:
+              - unique
+              - not_null
