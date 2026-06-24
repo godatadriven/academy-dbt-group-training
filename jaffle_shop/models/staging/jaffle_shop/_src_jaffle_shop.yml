@@ -1,9 +1,11 @@
 sources:
 
   - name: jaffle_shop
+    description: This data comes from the jaffle shop app
     schema: jaffle_shop
     tables:
       - name: customers # name chosen
+        description: One row is one customers. A customer has 0, 1 or many orders
         identifier: customers # this is the warehouse
         columns:
           - name: id
