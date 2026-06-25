@@ -1,7 +1,9 @@
 models:
   - name: stg_jaffle_shop_orders
+    description: One row represents an order at the jaffle shop.
     columns:
       - name: order_status
+        description: "{{ doc('order_status') }}"
         data_tests:
           - accepted_values:
               arguments:
