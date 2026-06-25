@@ -1,8 +1,10 @@
 sources:
   - name: jaffle_shop
+    description: This is the source for the jaffle_shop app
     schema: jaffle_shop
     tables:
       - name: customers
+        description: One row for each order. A customer can make 0 or 1 orders.
         identifier: customers
         columns:
           - name: id
