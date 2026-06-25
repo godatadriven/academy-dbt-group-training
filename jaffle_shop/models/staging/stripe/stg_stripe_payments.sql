@@ -3,11 +3,11 @@ with source as (
   ),
   renamed as (
       select
-          id as payment_id,
-          orderid as order_id,
-          paymentmethod as payment_method,
-          amount/100 as payment_amount,
-          status
+          payment_id,
+          order_id,
+          payment_method,
+          payment_amount/100 as payment_amount,
+          payment_date
       from source
   )
   select * from renamed
