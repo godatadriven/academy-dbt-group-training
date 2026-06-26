@@ -54,10 +54,6 @@ models you build with `dbt run` (e.g. `dbt_dev.customers`).
 Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
 **`raw_jaffle_shop`** (the raw source data) and **`dbt_dev`** (your own models).
 
-> Want a free-form SQL shell instead? The **DuckDB CLI** is pre-installed too —
-> run `duckdb jaffle_shop.duckdb` from the `jaffle_shop` folder, then try
-> `SHOW ALL TABLES;` or `SELECT * FROM dbt_dev.customers;`.
-
 #### (Optional) Use your own schema
 
 By default your models build into the `dbt_dev` schema. If you want an isolated
