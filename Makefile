@@ -1,4 +1,4 @@
-# Handy commands for the dbt DuckDB training.
+# Handy commands for the dbt training repo.
 # These work no matter which directory you run them from — paths are resolved
 # relative to this Makefile, not your current directory.
 #
