@@ -4,6 +4,9 @@
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
+  "remoteEnv": {
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -23,7 +26,7 @@
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
         },
-        "dbt.dbtPythonPath": "/usr/local/bin/python3",
+        "dbt.dbtPythonPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "dbt.profilesDir": "${containerWorkspaceFolder}/jaffle_shop",
         "dbt.queryLimit": 100,
         "dbt.runDbtCommandsInTerminal": true,

@@ -1,0 +1,18 @@
+[project]
+name = "academy-dbt-group-training"
+version = "0.1.0"
+description = "Xebia Academy dbt Group Training environment and dependencies."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # dbt core + DuckDB adapter. This training runs entirely on a local DuckDB
+    # database — no cloud warehouse, no credentials. dbt-duckdb pulls in a
+    # compatible dbt-core.
+    "dbt-duckdb==1.10.1",
+    # Pin the engine for reproducible codespaces across trainings.
+    "duckdb==1.5.4",
+]
+
+[tool.uv]
+# Dependency-only environment: do not build/install this project as a package.
+package = false

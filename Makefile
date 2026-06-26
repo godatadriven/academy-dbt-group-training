@@ -10,7 +10,7 @@ ROOT_DIR := $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
 .PHONY: show-tables
 
 show-tables:
-	cd $(ROOT_DIR)/jaffle_shop && dbt show --limit -1 --inline \
+	cd $(ROOT_DIR)/jaffle_shop && uv run dbt show --limit -1 --inline \
 		"select table_schema, table_name \
 		 from information_schema.tables \
 		 order by table_schema, table_name"

@@ -1,7 +1,0 @@
-# dbt core + DuckDB adapter.
-# This training runs entirely on a local DuckDB database — no cloud warehouse,
-# no credentials. dbt-duckdb pulls in a compatible dbt-core and duckdb itself.
-dbt-duckdb==1.10.1
-
-# Pin the engine for reproducible codespaces across trainings.
-duckdb==1.5.4
