@@ -1,0 +1,35 @@
+[project]
+name = "academy-dbt-group-training"
+version = "0.1.0"
+description = "Xebia Academy dbt Group Training environment and dependencies."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # dbt core and adapters
+    "dbt-bigquery==1.11.0",
+    "dbt-core==1.11.6",
+    "dbt-databricks==1.11.5",
+    "dbt-snowflake==1.11.2",
+    "dbt-spark==1.10.1",
+    # Databricks SQL connector
+    "databricks-sql-connector>=4.1.3,<5",
+    # BigQuery / Snowflake / Arrow
+    "google-cloud-bigquery==3.27.0",
+    "pyarrow==23.0.1",
+    "snowflake-connector-python==4.3.0",
+    # Pydantic
+    "pydantic==2.12.5",
+    "pydantic-core==2.41.5",
+    # HTTP & SSL dependencies
+    "charset-normalizer==3.4.4",
+    "requests==2.32.5",
+    "urllib3==2.6.3",
+    # Other helpers
+    "agate==1.9.1",
+    "python-dateutil==2.9.0.post0",
+    "tzdata==2025.3",
+]
+
+[tool.uv]
+# Dependency-only environment: do not build/install this project as a package.
+package = false
