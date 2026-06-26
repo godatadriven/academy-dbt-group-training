@@ -54,6 +54,15 @@ models you build with `dbt run` (e.g. `dbt_dev.customers`).
 Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
 **`raw_jaffle_shop`** (the raw source data) and **`dbt_dev`** (your own models).
 
+To list every table at a glance, run this from anywhere in the repo:
+
+```bash
+make show-tables
+```
+
+This is a shortcut defined in the `Makefile` at the repo root — it prints every
+schema and table in your DuckDB database.
+
 #### (Optional) Use your own schema
 
 By default your models build into the `dbt_dev` schema. If you want an isolated
