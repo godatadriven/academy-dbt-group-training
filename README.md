@@ -44,31 +44,19 @@ That's it — dbt builds the models into your local DuckDB database
 
 ### Step 3: Check what you've built
 
-Everything you create lives in a single database file (`jaffle_shop.duckdb`). The
-easiest way to look inside it is the **DuckDB CLI**, which is pre-installed. From
-inside the `jaffle_shop` folder:
+The simplest way to look at the data is the ready-made queries in
+**`jaffle_shop/analyses/scratchpad.sql`**. Open it, highlight a query, and run it
+with the **dbt Power User** extension's *Preview* (or your SQL tool of choice) to
+see the results — no need to write any SQL. It contains a `select` for each raw
+source table (`raw_jaffle_shop.customers`, `orders`, `payments`) and for the
+models you build with `dbt run` (e.g. `dbt_dev.customers`).
 
-```bash
-duckdb jaffle_shop.duckdb
-```
+Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
+**`raw_jaffle_shop`** (the raw source data) and **`dbt_dev`** (your own models).
 
-This opens an interactive SQL shell. A few things to try:
-
-```sql
-SHOW ALL TABLES;                      -- every schema + table, with their columns
-SELECT * FROM customers LIMIT 10;     -- the model you just built (in your schema)
-DESCRIBE customers;                    -- column names and types
-SELECT * FROM raw_jaffle_shop.orders; -- the raw source data
-.quit                                 -- leave the shell
-```
-
-`SHOW ALL TABLES` shows two schemas: **`raw_jaffle_shop`** (the raw source data:
-`customers`, `orders`, `payments`) and **your own schema** (`dbt_dev` by default),
-which holds the models you build with `dbt run`.
-
-> Prefer clicking over typing? The **dbt Power User** extension is installed too —
-> open any model and use *Preview* to see its rows, or generate the docs site with
-> `dbt docs generate && dbt docs serve` for a browsable catalog.
+> Want a free-form SQL shell instead? The **DuckDB CLI** is pre-installed too —
+> run `duckdb jaffle_shop.duckdb` from the `jaffle_shop` folder, then try
+> `SHOW ALL TABLES;` or `SELECT * FROM dbt_dev.customers;`.
 
 #### (Optional) Use your own schema
 

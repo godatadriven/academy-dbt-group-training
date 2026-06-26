@@ -4,9 +4,6 @@
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
-  "containerEnv": {
-    "DBT_PROFILES_DIR": "/root/.dbt"
-  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -26,7 +23,7 @@
           "*.md": "vscode.markdown.preview.editor"
         },
         "dbt.dbtPythonPath": "/usr/local/bin/python3",
-        "dbt.profilesDir": "/root/.dbt",
+        "dbt.profilesDir": "${containerWorkspaceFolder}/jaffle_shop",
         "dbt.queryLimit": 100,
         "dbt.runDbtCommandsInTerminal": true,
         "dbt.projectPath": "${containerWorkspaceFolder}/jaffle_shop"
