@@ -42,6 +42,34 @@ That's it — dbt builds the models into your local DuckDB database
 > you ever want to reload it yourself (you will, during the Sources lesson), run
 > `dbt seed` from inside the `jaffle_shop` folder — it is safe to re-run.
 
+### Step 3: Check what you've built
+
+Everything you create lives in a single database file (`jaffle_shop.duckdb`). The
+easiest way to look inside it is the **DuckDB CLI**, which is pre-installed. From
+inside the `jaffle_shop` folder:
+
+```bash
+duckdb jaffle_shop.duckdb
+```
+
+This opens an interactive SQL shell. A few things to try:
+
+```sql
+SHOW ALL TABLES;                      -- every schema + table, with their columns
+SELECT * FROM customers LIMIT 10;     -- the model you just built (in your schema)
+DESCRIBE customers;                    -- column names and types
+SELECT * FROM raw_jaffle_shop.orders; -- the raw source data
+.quit                                 -- leave the shell
+```
+
+`SHOW ALL TABLES` shows two schemas: **`raw_jaffle_shop`** (the raw source data:
+`customers`, `orders`, `payments`) and **your own schema** (`dbt_dev` by default),
+which holds the models you build with `dbt run`.
+
+> Prefer clicking over typing? The **dbt Power User** extension is installed too —
+> open any model and use *Preview* to see its rows, or generate the docs site with
+> `dbt docs generate && dbt docs serve` for a browsable catalog.
+
 #### (Optional) Use your own schema
 
 By default your models build into the `dbt_dev` schema. If you want an isolated
