@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e 
+set -e
 
 # Install Python dependencies
 pip3 install --user -r requirements.txt
