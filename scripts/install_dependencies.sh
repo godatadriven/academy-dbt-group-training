@@ -1,8 +1,9 @@
 #!/bin/bash
-set -e 
+set -e
 
-# Install Python dependencies
-pip3 install --user -r requirements.txt
+# Install Python dependencies into the project virtual environment with uv.
+# `uv sync` reads pyproject.toml + uv.lock and provisions .venv reproducibly.
+uv sync
 
 # Set up dbt folder
 mkdir -p ~/.dbt/
