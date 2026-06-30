@@ -9,7 +9,7 @@ orders as (
 order_payments as (
     select
         order_id,
-        sum(payment_amount) as order_amount
+        sum(payment_amount_dollars) as order_amount
     from payments
     group by 1
 ),

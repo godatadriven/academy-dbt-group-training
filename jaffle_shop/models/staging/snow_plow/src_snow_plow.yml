@@ -1,0 +1,7 @@
+sources:
+  - name: snow_plow_events
+    schema: snowplow # can be picked up from source_name
+    tables:
+      - name: page_views
+        identifier: page_views
+   
