@@ -6,3 +6,10 @@ sources:
       - name: payments
         identifier: payments
         description: "One row represents a payment. Orders can be split over different types of payment."
+        columns: 
+          - name: payment_amount
+            data_tests:
+              - dbt_expectations.expect_column_values_to_be_between:
+                  arguments: 
+                    min_value: 0  # (Optional)
+                    max_value: 5000 # (Optional)

@@ -1,0 +1,6 @@
+sources:
+  - name: snowplow_events
+    schema: snowplow
+    tables: 
+      - name: page_views
+      - name: students

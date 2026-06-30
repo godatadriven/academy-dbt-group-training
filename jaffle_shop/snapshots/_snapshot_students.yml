@@ -1,0 +1,7 @@
+snapshots:
+ - name: snapshot_students
+   relation: source('snowplow_events', 'students')
+   config:
+     unique_key: student_id
+     strategy: check
+     check_cols: all 

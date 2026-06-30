@@ -1,0 +1,13 @@
+models:
+
+  - name: fct_orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: order_amount
+        data_tests:
+          - greater_or_equal_to:
+              arguments:
+                value: 0

@@ -4,6 +4,7 @@ with source as (
   renamed as (
       select
         id as customer_id,
+        {{ dbt_utils.generate_surrogate_key(['first_name', 'last_name']) }} as name_sk,
         first_name,
         last_name
 
