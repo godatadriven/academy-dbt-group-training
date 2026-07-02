@@ -1,0 +1,20 @@
+# dbt connection profile for the training.
+#
+# This project runs entirely on DuckDB — an embedded database stored in a single
+# local file inside your codespace. There are NO credentials, tokens or cloud
+# warehouses to configure: everything works out of the box.
+#
+# dbt picks this file up automatically because it sits next to dbt_project.yml.
+duckdb_dev:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # The database lives in one file in this folder (jaffle_shop.duckdb). The
+      # path is relative to where you run dbt from, so run dbt from inside the
+      # jaffle_shop folder.
+      path: jaffle_shop.duckdb
+      # Schema your own models build into. Override with DBT_SCHEMA if you want
+      # an isolated schema (e.g. to compare your work with a colleague's).
+      schema: "{{ env_var('DBT_SCHEMA', 'dbt_dev') }}"
+      threads: 4

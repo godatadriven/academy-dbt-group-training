@@ -10,71 +10,67 @@ of dbt, covering its core concepts and functionalities. You will
 learn how to use dbt to build and maintain data models, perform data 
 transformations, and ensure data quality through rigorous testing and documentation.
 
+This training runs entirely on **DuckDB**, a fast embedded database that lives in
+a single file inside your codespace. There are **no credentials, tokens, cloud
+accounts or warehouses** to set up — when your codespace finishes building, the
+data is already loaded and you can start straight away.
+
 ### Step 1: Create a new codespace
 
-Click 'Code', then 'Codespaces, then 'Create codespace on main'.
+Click 'Code', then 'Codespaces', then 'Create codespace on main'.
 
 ![Create codespace on main](images/open-codespace.gif)
 
-This will create a new `codespace`, a sandbox with everything you need for the training. 
+This creates a `codespace`: a sandbox with everything you need for the training.
+While it builds, it installs dbt + the DuckDB adapter and loads the raw jaffle
+data for you. Wait for it to finish before continuing.
 
-### Step 2
+### Step 2: Run the project
 
-Are you taking a training as a company? Then run
-
-```bash
-git branch -a
-```
-*Do you see your company branch? Then switch to that!*
+Everything you need is already in place. From the terminal:
 
 ```bash
-git checkout <your_company_branch>
+cd jaffle_shop
+dbt run
 ```
 
-### Step 3: Connect to the Data
+That's it — dbt builds the models into your local DuckDB database
+(`jaffle_shop/jaffle_shop.duckdb`). You can also try `dbt build`, `dbt test` and
+`dbt docs generate && dbt docs serve`.
 
-#### Snowflake or Databricks
+> **Tip:** the raw data is loaded automatically when the codespace is built. If
+> you ever want to reload it yourself (you will, during the Sources lesson), run
+> `dbt seed` from inside the `jaffle_shop` folder — it is safe to re-run.
 
-You need to set your target schema. Run the following:
+### Step 3: Check what you've built
+
+The simplest way to look at the data is the ready-made queries in
+**`jaffle_shop/analyses/scratchpad.sql`**. Open it, highlight a query, and run it
+with the **dbt Power User** extension's *Preview* (or your SQL tool of choice) to
+see the results — no need to write any SQL. It contains a `select` for each raw
+source table (`raw_jaffle_shop.customers`, `orders`, `payments`) and for the
+models you build with `dbt run` (e.g. `dbt_dev.customers`).
+
+Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
+**`raw_jaffle_shop`** (the raw source data) and **`dbt_dev`** (your own models).
+
+To list every table at a glance, run this from anywhere in the repo:
 
 ```bash
-export DBT_SCHEMA=dbt_<inital><last_name>
+make show-tables
 ```
 
-This needs to be **unique** as it is the place in which all the data you create with transformations will be stored.
+This is a shortcut defined in the `Makefile` at the repo root — it prints every
+schema and table in your DuckDB database.
 
-#### BigQuery
+#### (Optional) Use your own schema
 
-1. **Find your project ID**: Go to the [Google Cloud Console](https://console.cloud.google.com/) and note your project ID (For training: `sql-training-422508`)
+By default your models build into the `dbt_dev` schema. If you want an isolated
+schema — for example to compare your work with a colleague's — set `DBT_SCHEMA`
+before running dbt:
 
-2. **Authenticate with Google Cloud**: Run the command below, and follow the prompts:
-   1. `gcloud auth login`
-      - Copy the URL that appears
-      - Open it in your browser and authenticate
-      - Copy the verification code
-      - Paste it back in the terminal
-   2. `gcloud auth application-default login`
-      - Copy the URL that appears
-      - Open it in your browser 
-      - Select all the permissions and authenticate
-      - Copy the verification code
-      - Paste it back in the terminal
-
-3. **Set your project**: Replace `<PROJECT_ID>` with your project ID:
 ```bash
-   gcloud config set project sql-training-422508
-   gcloud auth application-default set-quota-project sql-training-422508
-```
-
-4. **Set environment variable**: Replacing your_name (!!)
-```bash
-   export GCP_PROJECT_ID=sql-training-422508
-   export BQ_DATASET=dbt_<your_name>
-```
-
-5. **Create your working branch**:
-```bash
-   git checkout -b dbt_<name>
+export DBT_SCHEMA=dbt_<initial><last_name>
 ```
 
 ## Data Overview

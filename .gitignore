@@ -12,3 +12,5 @@ devcontainer.env
 .user.yml
 bigquery_keys.json
 duckdb.db
+*.duckdb
+*.duckdb.wal

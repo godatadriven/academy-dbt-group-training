@@ -1,21 +1,9 @@
 {
-  "name": "dbt Group Training - gcloud + Databricks",
+  "name": "dbt Group Training - DuckDB",
   "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "root",
   "forwardPorts": [8080, 5000],
   "postCreateCommand": "bash scripts/install_dependencies.sh",
-  "containerEnv": {
-    "GCP_PROJECT_ID": "${localEnv:GCP_PROJECT_ID}",
-    "SNOWFLAKE_ACCOUNT": "${codespaces:SNOWFLAKE_ACCOUNT}",
-    "SNOWFLAKE_USER": "${codespaces:SNOWFLAKE_USER}",
-    "SNOWFLAKE_PASSWORD": "${codespaces:SNOWFLAKE_PASSWORD}",
-    "DATABRICKS_HOST": "${codespaces:DATABRICKS_HOST}",
-    "DATABRICKS_HTTP_PATH": "${codespaces:DATABRICKS_HTTP_PATH}",
-    "DATABRICKS_TOKEN": "${codespaces:DATABRICKS_TOKEN}",
-    "DATABRICKS_SCHEMA": "dbt_dev",
-    "DATABRICKS_CATALOG": "hive_metastore",
-    "DBT_PROFILES_DIR": "/root/.dbt"
-  },
   "remoteEnv": {
     "PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
   },
@@ -25,8 +13,8 @@
         "ms-python.python",
         "ms-toolsai.jupyter",
         "innoverio.vscode-dbt-power-user",
-        "googlecloudtools.cloudcode",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "mechatroner.rainbow-csv"
       ],
       "settings": {
         "files.associations": {
@@ -38,8 +26,9 @@
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
         },
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "dbt.dbtPythonPath": "${containerWorkspaceFolder}/.venv/bin/python",
-        "dbt.profilesDir": "/root/.dbt",
+        "dbt.profilesDir": "${containerWorkspaceFolder}/jaffle_shop",
         "dbt.queryLimit": 100,
         "dbt.runDbtCommandsInTerminal": true,
         "dbt.projectPath": "${containerWorkspaceFolder}/jaffle_shop"
