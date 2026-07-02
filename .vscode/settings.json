@@ -1,10 +1,22 @@
 {
     "dbt.enableNewLineagePanel": true,
-    "dbcode.watchedFolders": [
+    // db.code doesn't automatically detect the duckdb db file, so we specify the connection details here. This ensure participants don't have to manually configure the connection in db.code.
+    "dbcode.connections": [
         {
-            "id": "jaffle-shop-duckdb",
+            "connectionId": "jaffle-shop-duckdb",
             "name": "Jaffle Shop (DuckDB)",
-            "path": "./jaffle_shop"
+            "driver": "duckdb",
+            "connectionType": "socket",
+            "socket": "${workspaceFolder}/jaffle_shop/jaffle_shop.duckdb",
+            "driverOptions": {
+                "fileSearchPath": "database"
+            },
+            "readOnly": false,
+            "postConnectionSqlType": "inline",
+            "pinnedConnectionTimeout": "0",
+            "introspection": {
+                "progressive": false
+            }
         }
     ]
 }
