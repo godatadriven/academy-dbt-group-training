@@ -1,3 +1,10 @@
 {
-    "dbt.enableNewLineagePanel": true
+    "dbt.enableNewLineagePanel": true,
+    "dbcode.watchedFolders": [
+        {
+            "id": "jaffle-shop-duckdb",
+            "name": "Jaffle Shop (DuckDB)",
+            "path": "./jaffle_shop"
+        }
+    ]
 }
