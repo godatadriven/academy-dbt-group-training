@@ -56,10 +56,13 @@ Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
 
 To browse every schema and table interactively, use the **DBCode** extension
 (installed automatically in the devcontainer). Open its panel from the sidebar —
-it auto-detects the `jaffle_shop.duckdb` file, so you can expand the
-`raw_jaffle_shop` and `dbt_dev` schemas, click any table to preview its rows, and
-run ad-hoc SQL against the database. If the connection doesn't appear on its own,
+a preconfigured **Jaffle Shop (DuckDB)** connection is already there, so you can
+expand the `raw_jaffle_shop` and `dbt_dev` schemas, click any table to preview its
+rows, and run ad-hoc SQL against the database. If the connection doesn't appear,
 add it with **+ → DuckDB** and point it at `jaffle_shop/jaffle_shop.duckdb`.
+
+#### Inspect what you built
+![Opening the DBCode panel and browsing the Jaffle Shop database](images/dbcode-walkthrough.gif)
 
 #### (Optional) Use your own schema
 
