@@ -1,0 +1,17 @@
+# Basic pre-commit setup using the standard hooks from pre-commit/pre-commit-hooks.
+# Install locally with: pre-commit install
+# Run against all files with: pre-commit run --all-files
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-json
+        # devcontainer.json and VS Code settings use JSONC (comments/trailing commas).
+        exclude: ^(\.devcontainer/|\.vscode/)
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
