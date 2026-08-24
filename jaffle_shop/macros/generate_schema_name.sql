@@ -1,9 +1,9 @@
 {#
     Use the custom schema name *as-is* when one is configured (e.g. `+schema:
-    raw_jaffle_shop`), instead of dbt's default behaviour of prefixing it with
-    the target schema (which would give `dbt_dev_raw_jaffle_shop`).
+    jaffle_app`), instead of dbt's default behaviour of prefixing it with
+    the target schema (which would give `dbt_dev_jaffle_app`).
 
-    This lets the seeds live in a fixed `raw_jaffle_shop` schema that models can
+    This lets the seeds live in a fixed `jaffle_app` schema that models can
     reference directly, while models without a custom schema still build into the
     user's own target schema (e.g. dbt_<name>).
 #}

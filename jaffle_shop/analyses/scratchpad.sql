@@ -11,16 +11,16 @@
 
 
 -- ============================ Raw sources =================================
--- The raw jaffle data lives in the `raw_jaffle_shop` schema.
+-- The raw jaffle data lives in the `jaffle_app` schema.
 
 -- customers source
-select * from raw_jaffle_shop.customers;
+select * from jaffle_app.customers;
 
 -- orders source
-select * from raw_jaffle_shop.orders;
+select * from jaffle_app.orders;
 
 -- payments source
-select * from raw_jaffle_shop.payments;
+select * from jaffle_app.payments;
 
 
 -- ============================ Your models =================================

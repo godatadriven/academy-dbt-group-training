@@ -36,14 +36,14 @@ models:
       +materialized: view
 
 # Raw seed data (customers, orders, payments) is loaded into a dedicated
-# `raw_jaffle_shop` schema, so models can read e.g. `raw_jaffle_shop.customers`.
-# The literal schema name (instead of dbt's default `<target>_raw_jaffle_shop`)
+# `jaffle_app` schema, so models can read e.g. `jaffle_app.customers`.
+# The literal schema name (instead of dbt's default `<target>_jaffle_app`)
 # is enforced by the generate_schema_name override in macros/.
 seeds:
   jaffle_shop_analytics:
-    +schema: raw_jaffle_shop
+    +schema: jaffle_app
     # Seed files are prefixed `raw_` to avoid clashing with model names, but are
-    # aliased to the plain table names the models read (raw_jaffle_shop.customers).
+    # aliased to the plain table names the models read (jaffle_app.customers).
     raw_customers:
       +alias: customers
     raw_orders:
