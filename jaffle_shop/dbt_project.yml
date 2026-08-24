@@ -52,3 +52,5 @@ seeds:
         _ETL_LOADED_AT: timestamp
     raw_payments:
       +alias: payments
+    raw_products:
+      +alias: products
