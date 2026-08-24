@@ -52,3 +52,10 @@ seeds:
         _ETL_LOADED_AT: timestamp
     raw_payments:
       +alias: payments
+      # _BATCHED_AT is rewritten on every `dbt seed` so it always looks like the
+      # batch landed 12-24 hours ago (relative to whenever this actually runs),
+      # instead of the fixed date baked into the CSV. Each row gets its own
+      # random offset within that window, so timestamps spread across the batch
+      # rather than all landing at once. Useful later for source freshness demos.
+      +post-hook:
+        - "update {{ this }} set _BATCHED_AT = current_timestamp - (interval '12 hours' + (random() * interval '12 hours'))"
