@@ -11,7 +11,9 @@
 
 
 -- ============================ Raw sources =================================
--- The raw jaffle data lives in the `jaffle_app` schema.
+-- The raw jaffle app data lives in the `jaffle_app` schema. Payments come from
+-- a separate source system (Stripe), so they live in their own `stripe` schema
+-- under the table name Stripe actually exports them as.
 
 -- customers source
 select * from jaffle_app.customers;
@@ -20,7 +22,7 @@ select * from jaffle_app.customers;
 select * from jaffle_app.orders;
 
 -- payments source
-select * from jaffle_app.payments;
+select * from stripe.incoming_payments;
 
 
 -- ============================ Your models =================================
