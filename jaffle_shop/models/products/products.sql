@@ -14,4 +14,4 @@ select
     -- changes over time (demoed via snapshots).
     round(random() * 5 + 1, 2) as price
 
-from raw_jaffle_shop.products
+from {{ ref('raw_products') }}
