@@ -1,10 +1,10 @@
-ID,PRODUCT_NAME,CATEGORY
-1,sandwich,food
-2,egg,food
-3,muffin,food
-4,juice,drink
-5,cola,drink
-6,milk,drink
-7,chips,snack
-8,cookie,snack
-9,popcorn,snack
+ID,PRODUCT_NAME,CATEGORY,PRICE,TIMESTAMP
+1,sandwich,food,4.50,2026-08-01 09:00:00
+2,egg,food,1.20,2026-08-01 09:00:00
+3,muffin,food,2.75,2026-08-01 09:00:00
+4,juice,drink,2.00,2026-08-01 09:00:00
+5,cola,drink,1.80,2026-08-01 09:00:00
+6,milk,drink,1.50,2026-08-01 09:00:00
+7,chips,snack,2.20,2026-08-01 09:00:00
+8,cookie,snack,1.60,2026-08-01 09:00:00
+9,popcorn,snack,2.40,2026-08-01 09:00:00

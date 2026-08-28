@@ -4,8 +4,8 @@
     config(
       target_schema='dbt_dev',
       unique_key='product_id',
-      strategy='check',
-      check_cols=['price'],
+      strategy='timestamp',
+      updated_at='updated_at',
     )
 }}
 
