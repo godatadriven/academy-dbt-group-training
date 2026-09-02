@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'jaffle_shop'
+name: 'jaffle_shop_analytics'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
@@ -30,27 +30,31 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  jaffle_shop:
+  jaffle_shop_analytics:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
 
-# Raw seed data (customers, orders, payments) is loaded into a dedicated
-# `raw_jaffle_shop` schema, so models can read e.g. `raw_jaffle_shop.customers`.
-# The literal schema name (instead of dbt's default `<target>_raw_jaffle_shop`)
-# is enforced by the generate_schema_name override in macros/.
+# Raw seed data is loaded into dedicated schemas per source system, so models
+# can read e.g. `jaffle_app.customers`. The literal schema names (instead of
+# dbt's default `<target>_<schema>`) are enforced by the generate_schema_name
+# override in macros/.
 seeds:
-  jaffle_shop:
-    +schema: raw_jaffle_shop
+  jaffle_shop_analytics:
+    +schema: jaffle_app
     # Seed files are prefixed `raw_` to avoid clashing with model names, but are
-    # aliased to the plain table names the models read (raw_jaffle_shop.customers).
+    # aliased to the plain table names the models read (jaffle_app.customers).
     raw_customers:
       +alias: customers
     raw_orders:
       +alias: orders
       +column_types:
         _ETL_LOADED_AT: timestamp
+    # Payments come from Stripe, a separate source system from the app itself,
+    # so they live in their own schema under the opaque name Stripe actually
+    # exports them as. Mapping `incoming_payments` back to a friendly `payments`
+    # name is exactly what sources.yml's `identifier` field is for — covered in
+    # the Sources lesson.
     raw_payments:
-      +alias: payments
-    raw_products:
-      +alias: products
+      +schema: stripe
+      +alias: incoming_payments

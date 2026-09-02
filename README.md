@@ -48,18 +48,20 @@ The simplest way to look at the data is the ready-made queries in
 **`jaffle_shop/analyses/scratchpad.sql`**. Open it, highlight a query, and run it
 with the **dbt Power User** extension's *Preview* (or your SQL tool of choice) to
 see the results — no need to write any SQL. It contains a `select` for each raw
-source table (`raw_jaffle_shop.customers`, `orders`, `payments`) and for the
-models you build with `dbt run` (e.g. `dbt_dev.customers`).
+source table (`jaffle_app.customers`, `orders`, `stripe.incoming_payments`) and
+for the models you build with `dbt run` (e.g. `dbt_dev.customers`).
 
-Everything lives in two schemas inside the single `jaffle_shop.duckdb` file:
-**`raw_jaffle_shop`** (the raw source data) and **`dbt_dev`** (your own models).
+Everything lives in three schemas inside the single `jaffle_shop.duckdb` file:
+**`jaffle_app`** (raw data from the app itself), **`stripe`** (raw payments data
+from the payment processor), and **`dbt_dev`** (your own models).
 
 To browse every schema and table interactively, use the **DBCode** extension
 (installed automatically in the devcontainer). Open its panel from the sidebar —
 a preconfigured **Jaffle Shop (DuckDB)** connection is already there, so you can
-expand the `raw_jaffle_shop` and `dbt_dev` schemas, click any table to preview its
-rows, and run ad-hoc SQL against the database. If the connection doesn't appear,
-add it with **+ → DuckDB** and point it at `jaffle_shop/jaffle_shop.duckdb`.
+expand the `jaffle_app`, `stripe`, and `dbt_dev` schemas, click any table to
+preview its rows, and run ad-hoc SQL against the database. If the connection
+doesn't appear, add it with **+ → DuckDB** and point it at
+`jaffle_shop/jaffle_shop.duckdb`.
 
 #### Inspect what you built
 ![Opening the DBCode panel and browsing the Jaffle Shop database](images/dbcode-walkthrough.gif)
