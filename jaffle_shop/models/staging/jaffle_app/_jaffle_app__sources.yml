@@ -1,0 +1,31 @@
+sources:
+  - name: jaffle_app
+    schema: jaffle_app
+    tables:
+      - name: customers
+        identifier: customers # original data name
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
+      - name: orders
+        identifier: orders
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+
+          - name: status
+            data_tests:
+              - accepted_values:
+                  config:
+                    store_failures: true
+                  arguments:
+                    values: ['placed', 'shipped', 'completed', 'returned', 'return_pending'] 
+        # add a test for the id - unique and not_null
+        # challenge: add a test for accepted_values on status
+          # returned, return_pending, completed, shipped
+
+          # relationships test :)

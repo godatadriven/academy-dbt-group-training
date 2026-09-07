@@ -1,0 +1,1 @@
+select * from "jaffle_shop"."dbt_test__audit"."source_accepted_values_jaffle_app_bestellingen_status__ordered"

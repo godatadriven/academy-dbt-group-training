@@ -31,3 +31,8 @@ select * from stripe.incoming_payments;
 
 -- customers model
 select * from dbt_dev.customers;
+
+
+select *
+from jaffle_app.customers
+where id is null

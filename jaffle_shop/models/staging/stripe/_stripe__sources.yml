@@ -1,0 +1,13 @@
+sources:
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: incoming_payments # original data name
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
+
+
