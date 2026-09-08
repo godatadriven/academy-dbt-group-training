@@ -76,6 +76,31 @@ before running dbt:
 export DBT_SCHEMA=dbt_<initial><last_name>
 ```
 
+### Troubleshooting: "Conflicting lock is held"
+
+If dbt stops with an error like this:
+
+```
+IO Error: Could not set lock on file "jaffle_shop.duckdb":
+Conflicting lock is held in ... (PID 12345)
+```
+
+it means another tool has the database open. DuckDB keeps everything in one
+file, and that file allows either **one writer or several readers** — never both
+at the same time. Usually the other tool is the DBCode panel or a preview from
+the dbt Power User extension.
+
+You do **not** need to hunt down and kill the process. Ask who has it:
+
+```bash
+./scripts/db.sh
+```
+
+It names the tool holding the database and tells you how to make it let go —
+normally clicking *Disconnect* in the DBCode panel. dbt also waits about a
+minute for a busy database before giving up, so most of the time the clash
+resolves itself while you carry on.
+
 ## Data Overview
 
 ### Jaffle data

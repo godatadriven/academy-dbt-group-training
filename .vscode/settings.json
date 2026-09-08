@@ -11,9 +11,19 @@
             "driverOptions": {
                 "fileSearchPath": "database"
             },
-            "readOnly": false,
+            // Browsing is read-only: DBCode then takes a shared lock instead of
+            // an exclusive one, so several people/tools can look at the data at
+            // once. (It does not let dbt write while DBCode is connected —
+            // DuckDB allows one writer OR several readers, never both.)
+            "readOnly": true,
             "postConnectionSqlType": "inline",
-            "pinnedConnectionTimeout": "0",
+            // Let the connection go when it is idle. This was "0", which kept
+            // the database file open for as long as VS Code was running and was
+            // the main reason `dbt run` reported a locked database.
+            // NOTE: DBCode does not document this setting's unit; 5 is a sane
+            // value whether it means seconds or minutes. If locks persist, check
+            // the tooltip in DBCode's connection editor and adjust.
+            "pinnedConnectionTimeout": "5",
             "introspection": {
                 "progressive": false
             }

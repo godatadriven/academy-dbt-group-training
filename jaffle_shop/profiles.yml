@@ -18,3 +18,18 @@ duckdb_dev:
       # an isolated schema (e.g. to compare your work with a colleague's).
       schema: "{{ env_var('DBT_SCHEMA', 'dbt_dev') }}"
       threads: 4
+      # DuckDB lets one process write to the file, OR several read it — never
+      # both. The two settings below stop that turning into "kill the process".
+      #
+      # Release the database file as soon as dbt is done with it. Without this,
+      # a long-running dbt process (the dbt Power User extension keeps one alive
+      # for as long as VS Code is open) holds the file forever and your terminal
+      # `dbt run` cannot get in.
+      keep_open: false
+      # If something else does hold the file, wait for it instead of failing.
+      # dbt backs off 1s, 2s, 4s, 8s, 16s, 32s between attempts — about a minute
+      # in total, then a real error. Don't raise this much: attempt 10 would
+      # wait ~17 minutes and dbt would just look frozen.
+      retries:
+        connect_attempts: 6
+        retryable_exceptions: ["IOException"]
