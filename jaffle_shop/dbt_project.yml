@@ -46,6 +46,10 @@ seeds:
     # aliased to the plain table names the models read (jaffle_app.customers).
     raw_customers:
       +alias: customers
+    raw_products:
+      +alias: products
+      +column_types:
+        UPDATED_AT: timestamp
     raw_orders:
       +alias: orders
       +column_types:
