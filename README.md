@@ -76,6 +76,23 @@ before running dbt:
 export DBT_SCHEMA=dbt_<initial><last_name>
 ```
 
+#### Reset the database
+
+The whole database is one file, `jaffle_shop/jaffle_shop.duckdb`. It keeps
+everything you build until you remove it, also across sessions. Pick the reset
+that fits, and run it from inside the `jaffle_shop` folder:
+
+| What you want | Command |
+|---|---|
+| Put the raw data back as it was | `dbt seed` |
+| Rebuild your models | `dbt run` |
+| Clear the price history of the snapshot lesson | `dbt seed --select raw_products && dbt run-operation reset_products_demo` |
+| Start over with an empty database | `rm jaffle_shop.duckdb && dbt seed && dbt run` |
+
+Snapshots need the extra command because dbt never rebuilds a snapshot table.
+Every `dbt snapshot` adds to the history that is already there, so a new training
+would start with the rows of the last one.
+
 ## Data Overview
 
 ### Jaffle data
