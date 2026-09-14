@@ -37,6 +37,14 @@ dbt snapshot
 The muffin now has two rows: the old price with a `dbt_valid_to`, and the new
 price with `dbt_valid_to is null`.
 
+**Reset the demo** (before a new training, or to redo it). dbt never rebuilds a
+snapshot table, so the history stays until you drop it:
+
+```
+dbt seed --select raw_products
+dbt run-operation reset_products_demo
+```
+
 **Show the result:**
 
 ```
