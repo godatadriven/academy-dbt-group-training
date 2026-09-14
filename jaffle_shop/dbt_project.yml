@@ -58,3 +58,10 @@ seeds:
     raw_payments:
       +schema: stripe
       +alias: incoming_payments
+      +column_types:
+        _BATCHED_AT: timestamp
+      # Rewrite _BATCHED_AT on every `dbt seed` so the batch looks like it landed
+      # 18 hours ago. Trainers can change the age later with
+      # `dbt run-operation age_payments --args '{hours_ago: 30}'`.
+      +post-hook:
+        - "{{ set_batched_at(hours_ago=18) }}"
